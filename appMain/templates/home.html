@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}LotteIsHorse{% endblock %}
+
+<!-- User CSS -->
+{% block css %}{% endblock %}
+
+<!-- Main Content -->
+{% block content %}
+<div class="map-clean"><iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="400" style="height: 450px;"></iframe></div>
+<form class="mx-auto" style="width: 800px;max-width: 100%;">
+    <div class="input-group">
+        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text">
+        <div class="input-group-append"><button class="btn btn-primary btn-dark">Go!</button></div>
+    </div>
+    <div class="d-flex align-items-xl-center">
+        <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;"><i class="material-icons">person_pin_circle</i>실시간 내 위치</p>
+        <ul class="mr-auto"></ul>
+        <p class="d-xl-flex align-items-xl-center" style="font-size: 3.5vp;">전체</p>
+        <p class="d-xl-flex align-items-xl-center" style="margin-right: 5px;margin-left: 5px;font-size: 16px;">|</p>
+        <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">당일배송</p>
+        <p class="d-xl-flex align-items-xl-center" style="margin-right: 5px;margin-left: 5px;font-size: 16px;">|</p>
+        <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">매장별</p>
+        <p class="d-xl-flex align-items-xl-center" style="margin-right: 5px;margin-left: 5px;font-size: 16px;">|</p>
+        <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">제품별</p>
+    </div>
+</form>
+<div class="projects-horizontal">
+    <h1 style="font-size: 20px;margin-bottom: 16px;text-align: center;">⭐제품목록⭐ 근처의 업체를 확인하세요!</h1>
+    <div class="container">
+        <div class="row projects">
+            <div class="col-sm-6 item">
+                <div class="row">
+                    <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'img/product1.jpg' %}"></a></div>
+                    <div class="col">
+                        <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">제이숲</strong>블랙제이 스파토닉 헤어에센스 50ml</p><span style="font-size: 20px;"><strong>19,900</strong></span><span>원</span></div>
+                </div>
+            </div>
+            <div class="col-sm-6 item">
+                <div class="row">
+                    <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'img/product2.jpg' %}"></a></div>
+                    <div class="col">
+                        <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">아임미미</strong>아임 멀티 스틱 (쉐딩, 블러셔, 하이라이터)</p><span style="font-size: 20px;"><strong>9,600</strong></span><span>원</span></div>
+                </div>
+            </div>
+            <div class="col-sm-6 item">
+                <div class="row">
+                    <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'img/product1.jpg' %}"></a></div>
+                    <div class="col">
+                        <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">제이숲</strong>블랙제이 스파토닉 헤어에센스 50ml</p><span style="font-size: 20px;"><strong>19,900</strong></span><span>원</span></div>
+                </div>
+            </div>
+            <div class="col-sm-6 item">
+                <div class="row">
+                    <div class="col-md-12 col-lg-5"><a href="#"><img class="img-fluid" src="{% static 'img/product2.jpg' %}"></a></div>
+                    <div class="col">
+                        <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">아임미미</strong>아임 멀티 스틱 (쉐딩, 블러셔, 하이라이터)</p><span style="font-size: 20px;"><strong>9,600</strong></span><span>원</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- User JS -->
+{% block js %}{% endblock %}
