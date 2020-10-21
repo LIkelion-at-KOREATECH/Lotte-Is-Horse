@@ -86,3 +86,8 @@ pip install django
 pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
+
+#### 명령어 모음
+가상환경 실행: `. myvenv/Scripts/activate`
+
+static 파일 모으기: `python manage.py collectstatic`

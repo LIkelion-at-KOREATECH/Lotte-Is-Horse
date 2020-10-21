@@ -10,7 +10,7 @@
 {% block content %}
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <div class="row">
-        <div class="col-md-4"><img class="img-fluid" src="assets/img/LBPD10018990_29096_1.jpg"></div>
+        <div class="col-md-4"><img class="img-fluid" src="{% static 'img/product1/product1.jpg' %}"></div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-3">
@@ -52,13 +52,14 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="detailProduct" role="tabpanel" aria-labelledby="home-tab">
-            <img class="img-fluid" src="assets/img/10_1601024136325.jpg" />
-            <img class="img-fluid" src="assets/img/20_1601024141413.jpg" />
-            <img class="img-fluid" src="assets/img/30_1601024143858.jpg" />
-            <img class="img-fluid" src="assets/img/40_1601024146451.jpg" />
-            <img class="img-fluid" src="assets/img/41_1601024149701.jpg" />
-            <img class="img-fluid" src="assets/img/50_1601024154184.jpg" />
-            <img class="img-fluid" src="assets/img/60.jpg" />
+            <img class="img-fluid" src="{% static 'img/product1/detail1.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail2.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail3.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail4.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail5.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail6.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail7.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail8.jpg' %}" />
         </div>
 
         <div class="tab-pane fade" id="reviewProduct" role="tabpanel" aria-labelledby="profile-tab">
@@ -90,13 +91,16 @@
             <div class="container border-bottom">
                 <form method="post">
                     <div class="form-group">
-                        <div class="text-left star-rating" style="  font-size: 25px; color: #f9dd16;">
-                            <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="1"></span>
-                            <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="2"></span>
-                            <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="3"></span>
-                            <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="4"></span>
-                            <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="5"></span>
-                            <input class="form-control rating-value" type="hidden" id="rate" name="Rating" value="0" />
+                        <span class="form-text text-left text-muted">평점을 입력해주세요</span>
+                        <div class="form-group">
+                            <div class="text-left star-rating" style="font-size: 25px; color: #f9dd16;">
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="1"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="2"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="3"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="4"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="5"></span>
+                                <input class="form-control rating-value" type="hidden" id="rate" name="Rating" value="5" />
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -114,5 +118,5 @@
 
 <!-- User JS -->
 {% block js %}
-<script src="{% static js/ %}"></script>
+<script src="{% static 'js/A-working-Rating-option-for-Contact-Forms.js' %}"></script>
 {% endblock %}
