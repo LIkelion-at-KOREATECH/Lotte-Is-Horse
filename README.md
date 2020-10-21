@@ -80,6 +80,7 @@ pip install django
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- Title -->
 {% block title %}{% endblock %}
 
 <!-- User CSS -->

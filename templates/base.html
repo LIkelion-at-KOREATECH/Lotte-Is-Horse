@@ -10,7 +10,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/Footer-Basic.css' %}">
-    <link rel="stylesheet" href="{% static 'css/Login-Form-Clean.css' %}">
     <link rel="stylesheet" href="{% static 'css/Navigation-with-Button.css' %}">
     <link rel="stylesheet" href="{% static 'css/Projects-Horizontal.css' %}">
 
@@ -27,7 +26,8 @@
     <!-- User CSS -->
     {% block css %}{% endblock %}
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %} : 롯데는말이야</title>
+    
 </head>
 
 <body>
@@ -35,20 +35,23 @@
     <header>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="border-bottom-style: solid;border-bottom-color: rgb(255,83,15);">
             <div class="container">
-                <span class="d-flex d-xl-flex align-items-center align-items-xl-center">
+                <span class="d-flex d-xl-flex align-items-center align-items-xl-center position-relative">
                 <a class="navbar-brand" style="color: #FF530F;font-size: 35px;margin-right: 0px;">LOTTE는</a>
                 <img src="{% static 'img/horse.svg' %}" style="width: 39px;">
                 <a class="navbar-brand stretched-link" href="{% url 'home' %}" style="color: #FF530F;font-size: 35px;">이야</a></span>
                 <button
-                    data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="d-xl-flex align-items-xl-center sr-only">Toggle navigation</span><span class="navbar-toggler-icon d-xl-flex align-items-xl-center"></span></button>
-                    <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav mr-auto"></ul>
-                        <span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions">
-                            <i class="fas fa-toggle-on" style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i>
-                            <a class="login" href="#">Log In</a>
-                            <a class="btn btn-light action-button" role="button" href="#" style="background: rgb(255,83,15);">Sign Up</a>
-                        </span>
-                    </div>
+                    data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
+                    <span class="d-xl-flex align-items-xl-center sr-only">Toggle navigation</span>
+                    <span class="navbar-toggler-icon d-xl-flex align-items-xl-center"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav mr-auto"></ul>
+                    <span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions">
+                        <a href="https://www.lohbs.co.kr"><i class="fas fa-toggle-on"style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i></a>
+                        <a class="login" href="{% url 'login' %}">Log In</a>
+                        <a class="btn btn-light action-button" role="button" href="{% url 'signup' %}" style="background: rgb(255,83,15);">Sign Up</a>
+                    </span>
+                </div>
             </div>
         </nav>
     </header>
