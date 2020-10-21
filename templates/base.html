@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Login-Form-Clean.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Navigation-with-Button.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Projects-Horizontal.css' %}">
+
+     <!-- Bootstrap ICON -->
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/line-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/material-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/simple-line-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/typicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts/fontawesome5-overrides.min.css' %}">
+
+    <!-- User CSS -->
+    {% block css %}{% endblock %}
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="border-bottom-style: solid;border-bottom-color: rgb(255,83,15);">
+            <div class="container">
+                <span class="d-flex d-xl-flex align-items-center align-items-xl-center">
+                <a class="navbar-brand" style="color: #FF530F;font-size: 35px;margin-right: 0px;">LOTTE는</a>
+                <img src="{% static 'img/horse.svg' %}" style="width: 39px;">
+                <a class="navbar-brand stretched-link" href="{% url 'home' %}" style="color: #FF530F;font-size: 35px;">이야</a></span>
+                <button
+                    data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="d-xl-flex align-items-xl-center sr-only">Toggle navigation</span><span class="navbar-toggler-icon d-xl-flex align-items-xl-center"></span></button>
+                    <div class="collapse navbar-collapse" id="navcol-1">
+                        <ul class="nav navbar-nav mr-auto"></ul>
+                        <span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions">
+                            <i class="fas fa-toggle-on" style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i>
+                            <a class="login" href="#">Log In</a>
+                            <a class="btn btn-light action-button" role="button" href="#" style="background: rgb(255,83,15);">Sign Up</a>
+                        </span>
+                    </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main role="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-basic">
+        <div class="social"><a href="#"><i class="icon ion-social-github"></i></a><a href="#"><i class="icon ion-android-mail"></i></a><a href="#"><i class="icon ion-ios-telephone"></i></a></div>
+        <ul class="list-inline">
+            <li class="list-inline-item"><a href="#">Home</a></li>
+            <li class="list-inline-item"><a href="#">Services</a></li>
+            <li class="list-inline-item"><a href="#">About</a></li>
+            <li class="list-inline-item"><a href="#">Terms</a></li>
+            <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+        </ul>
+        <p class="copyright">한국기술교육대학교 멋쟁이사자처럼 8기 소분팀 © 2020</p>
+    </footer>
+
+    <!-- Bootstrap Javascript -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    
+    <!-- User JS -->
+    {% block js %}{% endblock %}
+</body>
+
+</html>

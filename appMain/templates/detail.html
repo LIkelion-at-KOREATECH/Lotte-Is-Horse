@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}LotteIsHorse{% endblock %}
+
+<!-- User CSS -->
+{% block css %}{% endblock %}
+
+<!-- Main Content -->
+{% block content %}
+<div class="container border-bottom" style="padding-bottom: 15px;">
+    <div class="row">
+        <div class="col-md-4"><img class="img-fluid" src="{% static 'img/product1/product1.jpg' %}"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-3">
+                    <p>브랜드</p>
+                    <p>제품명</p>
+                    <p>가격</p>
+                    <p>매장명</p>
+                    <p>재고</p>
+                </div>
+                <div class="col">
+                    <p>제이숲</p>
+                    <p>블랙제이 스파토닉 헤어에센스 50ml<br></p>
+                    <p>19,900원</p>
+                    <p><select><option value="12" selected="">천안 병천점</option><option value="13">서울 광화문점</option><option value="14">천안 야우리점</option></select></p><i class="fa fa-minus-square"></i><span style="margin-right: 10px;margin-left: 10px;">3</span>
+                    <i
+                        class="fa fa-plus-square"></i>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col"><button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button><button class="btn btn-outline-secondary btn-block" type="button">당일배송</button><button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
+                    <button
+                        class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <a class="nav-link active" id="detailProduct-tab" data-toggle="tab" href="#detailProduct" role="tab"
+                aria-controls="detailProduct" aria-selected="true">상세정보</a>
+        </li>
+        <li class="nav-item" role="presentation">
+            <a class="nav-link" id="reviewProduct-tab" data-toggle="tab" href="#reviewProduct" role="tab"
+                aria-controls="reviewProduct" aria-selected="false">리뷰</a>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="detailProduct" role="tabpanel" aria-labelledby="home-tab">
+            <img class="img-fluid" src="{% static 'img/product1/detail1.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail2.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail3.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail4.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail5.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail6.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail7.jpg' %}" />
+            <img class="img-fluid" src="{% static 'img/product1/detail8.jpg' %}" />
+        </div>
+
+        <div class="tab-pane fade" id="reviewProduct" role="tabpanel" aria-labelledby="profile-tab">
+            <div class="container border-bottom">
+                <strong>차니꾸</strong>
+                <div class="text-left" style="font-size: 25px;color: #f9dd16;">
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                </div>
+                <p>손소독제 세니타이저 2ea 기획세트 휴대용홀더증정 제품이라서 대 만족입니다</p>
+            </div>
+
+            <div class="container border-bottom">
+                <strong>투비</strong>
+                <div class="text-left" style="font-size: 25px;color: #f9dd16;">
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"></span>
+                    <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"></span>
+                </div>
+                <p>요즘 세니타이저 하나씩은 꼭 필수로<br />가지고 다닙니다.<br />색상과 케이스 휴대용 걸이까지<br />너무 귀여워서 주문했어요~<br />각각 향기가 있고 저한테는 좀 진한것
+                    같아요<br />가방에 달고 싶은데 고무연결하는게<br />힘드네요~<br /><br />무향, 무취를 더 선호합니다..<br /></p>
+            </div>
+
+            <div class="container border-bottom">
+                <form method="post">
+                    <div class="form-group">
+                        <span class="form-text text-left text-muted">평점을 입력해주세요</span>
+                        <div class="form-group">
+                            <div class="text-left star-rating" style="font-size: 25px; color: #f9dd16;">
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="1"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="2"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="3"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="4"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="5"></span>
+                                <input class="form-control rating-value" type="hidden" id="rate" name="Rating" value="5" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="리뷰 내용을 작성해주세요"></textarea>
+                    </div>
+                    <div class="form-group d-xl-flex justify-content-xl-end">
+                        <button class="btn btn-primary d-xl-flex" type="submit">등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<!-- User JS -->
+{% block js %}
+<script src="{% static 'js/A-working-Rating-option-for-Contact-Forms.js' %}"></script>
+{% endblock %}
