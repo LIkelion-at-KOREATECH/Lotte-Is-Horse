@@ -48,8 +48,16 @@
                     <ul class="nav navbar-nav mr-auto"></ul>
                     <span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions">
                         <a href="https://www.lohbs.co.kr"><i class="fas fa-toggle-on"style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i></a>
+                        {% if user.is_authenticated %}
+                        <a class="login" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
+                        <form id="logout" method="POST" action="{% url 'logout' %}">
+                            {% csrf_token %} <input type="hidden" />
+                        </form>
+                        <a class="btn btn-light action-button" role="button" href="#" style="background: rgb(255,83,15);">Mypage</a>
+                        {% else %}
                         <a class="login" href="{% url 'login' %}">Log In</a>
                         <a class="btn btn-light action-button" role="button" href="{% url 'signup' %}" style="background: rgb(255,83,15);">Sign Up</a>
+                        {% endif %}
                     </span>
                 </div>
             </div>

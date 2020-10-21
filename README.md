@@ -95,15 +95,27 @@ pip install django
 {% block js %}{% endblock %}
 ```
 
-#### requirement 생성 및 설치
+#### 명령어 모음
+requirement 생성 및 설치
 ```bash
 pip freeze > requirements.txt
 pip install -r requirements.txt
 ```
 
-#### 명령어 모음
 가상환경 실행: `. myvenv/Scripts/activate`
 
 static 파일 모으기: `python manage.py collectstatic`
 
 app 만들기: `python manage.py startapp (앱이름)`
+
+관리자 만들기: `python manage.py createsuperuser`
+
+DB 생성: 
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+#### 만든 계정 종류(아이디/비번)
+superuser: admin/admin, 
+user: user1/user1, 
