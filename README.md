@@ -73,6 +73,7 @@
 #### 설치한 pip
 ```bash
 pip install django
+pip install Pillow
 ```
 
 #### html 기본 형식
@@ -93,6 +94,17 @@ pip install django
 
 <!-- User JS -->
 {% block js %}{% endblock %}
+```
+
+#### 데이터베이스 초기화
+```bash
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc"  -delete
+```
+`db.sqlite3` 삭제
+```bash
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 #### 명령어 모음
