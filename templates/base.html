@@ -34,11 +34,21 @@
     <!-- Header -->
     <header>
         <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="border-bottom-style: solid;border-bottom-color: rgb(255,83,15);">
-            <div class="container"><span class="d-flex d-xl-flex align-items-center align-items-xl-center" onclick='location.href="{% url 'home' %}"' style="cursor:pointer;"><a class="navbar-brand" style="color: #FF530F;font-size: 35px;margin-right: 0px;">LOTTE는</a><img src="{% static 'img/horse.svg' %}" style="width: 39px;"><a class="navbar-brand" style="color: #FF530F;font-size: 35px;">이야</a></span>
+            <div class="container">
+                <span class="d-flex d-xl-flex align-items-center align-items-xl-center">
+                <a class="navbar-brand" style="color: #FF530F;font-size: 35px;margin-right: 0px;">LOTTE는</a>
+                <img src="{% static 'img/horse.svg' %}" style="width: 39px;">
+                <a class="navbar-brand stretched-link" href="{% url 'home' %}" style="color: #FF530F;font-size: 35px;">이야</a></span>
                 <button
                     data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="d-xl-flex align-items-xl-center sr-only">Toggle navigation</span><span class="navbar-toggler-icon d-xl-flex align-items-xl-center"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
-                        <ul class="nav navbar-nav mr-auto"></ul><span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions"><i class="fas fa-toggle-on" style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i> <a class="login" href="#">Log In</a><a class="btn btn-light action-button" role="button" href="#" style="background: rgb(255,83,15);">Sign Up</a></span></div>
+                        <ul class="nav navbar-nav mr-auto"></ul>
+                        <span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions">
+                            <i class="fas fa-toggle-on" style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i>
+                            <a class="login" href="#">Log In</a>
+                            <a class="btn btn-light action-button" role="button" href="#" style="background: rgb(255,83,15);">Sign Up</a>
+                        </span>
+                    </div>
             </div>
         </nav>
     </header>
