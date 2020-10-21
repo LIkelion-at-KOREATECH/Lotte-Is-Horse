@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'appMain.apps.AppmainConfig',
+    'appUser.apps.AppuserConfig',
+    'model.apps.ModelConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,7 +123,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
+    BASE_DIR / "LotteIsHorse" / "static",
     BASE_DIR / "appMain" / "static",
+    BASE_DIR / "appUser" / "static",
 ]
 
 
