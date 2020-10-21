@@ -41,6 +41,8 @@
 
   3. Template 생성: login.html, model.py
 
+  * **app 이름:** appMain
+
 ## 스크럼 :speaker:
 * **날짜 / 시간** :alarm_clock:
   * **화:** 개발 시작 회의
@@ -57,6 +59,17 @@
   * **코드리뷰(정기적으로 반드시 할 것!!)**
   
 # 개발시 참고사항
+#### App 종류
+###### appMain
+- main.html, detail.html 존재
+###### appUser
+- login.html, signup.html 존재
+###### model
+- 모델을 구현하기 위한 앱
+
+#### Model 종류
+[model](doc/model.md)
+
 #### 설치한 pip
 ```bash
 pip install django
@@ -67,6 +80,7 @@ pip install django
 {% extends 'base.html' %}
 {% load static %}
 
+<!-- Title -->
 {% block title %}{% endblock %}
 
 <!-- User CSS -->
@@ -91,3 +105,5 @@ pip install -r requirements.txt
 가상환경 실행: `. myvenv/Scripts/activate`
 
 static 파일 모으기: `python manage.py collectstatic`
+
+app 만들기: `python manage.py startapp (앱이름)`
