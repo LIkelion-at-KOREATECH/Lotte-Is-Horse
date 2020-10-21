@@ -41,7 +41,7 @@
 
   3. Template 생성: login.html, model.py
 
-  * **app 이름:** appMain
+* **app 이름:** appMain
 
 ## 스크럼 :speaker:
 * **날짜 / 시간** :alarm_clock:
