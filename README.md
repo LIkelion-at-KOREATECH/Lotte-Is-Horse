@@ -5,6 +5,8 @@
 2. 실시간 주문  *1시간 내 배달
 3. 회원관리
 4. 오프라인 매장 연결   *지도 API 이용
+
+[기획파일참고](./design.md)
    
 # :fire:개발규칙:fire:
 ## 컨벤션 :triangular_ruler:
@@ -66,9 +68,15 @@
 - login.html, signup.html 존재
 ###### model
 - 모델을 구현하기 위한 앱
+- api 구현
 
 #### Model 종류
 [model](doc/model.md)
+
+#### API 관리 방법
+방법1: 관리자 아이디로 로그인하여 /api/ 주소로 들어가기
+방법2: REST 통신 보내기 (Rest Client 확장프로그램 추천)
+[초기 데이터 모음](dataInitialization/data.rest)
 
 #### 설치한 pip
 ```bash
