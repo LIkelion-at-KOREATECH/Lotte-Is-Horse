@@ -3,7 +3,9 @@ from django.urls import path, include
 from model import views # views import 해주기
 
 router = DefaultRouter()
-router.register('store', views.StoreViewSet) #127.0.0.1:8000/essay/ 를 views.py의 PostViewSet함수와 연결
+router.register('store', views.StoreViewSet) #127.0.0.1:8000/api/store/ 를 views.py의 PostViewSet함수와 연결
+router.register('product', views.ProductViewSet)
+router.register('sell', views.SellViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
