@@ -23,7 +23,7 @@
 {% endfor %} -->
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <div class="row">
-        <div class="col-md-4"><img class="img-fluid" src="{% static 'img/product1/product1.jpg' %}"></div>
+        <div class="col-md-4"><img class="img-fluid" src="{{ product.0.mainImage }}"></div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-3">
@@ -34,17 +34,11 @@
                     <p>재고</p>
                 </div>
                 <div class="col">
-                    <p>제이숲</p>
-                    <p>블랙제이 스파토닉 헤어에센스 50ml<br></p>
-                    <p>19,900원</p>
-                    <p><select>
-                        <option value="1" selected="">롭스 건대점</option>
-                        <option value="2">롭스 왕십리역사점</option>
-                        <option value="3">롭스 월드몰1호점</option>
-                    </select></p>
-                        <i class="fa fa-minus-square"></i><span style="margin-right: 10px;margin-left: 10px;">3</span>
-                    <i
-                        class="fa fa-plus-square"></i>
+                    <p>{{ product.0.brand }}</p>
+                    <p>{{ product.0.name }}<br></p>
+                    <p>{{ product.0.price }}원</p>
+                    <p>{{ store.0.name }}</p>
+                    <p>{{ sell.0.count }}</p>
                 </div>
             </div>
             <div class="row">

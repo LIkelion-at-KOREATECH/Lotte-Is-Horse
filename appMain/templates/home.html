@@ -29,18 +29,26 @@
 <div class="projects-horizontal">
     <h1 style="font-size: 20px;margin-bottom: 16px;text-align: center;">⭐제품목록⭐ 근처의 업체를 확인하세요!</h1>
     <div class="container">
-        <div class="row projects">
+        <div class="row projects" id="product-list">
             {% for p in product %}
             <div class="col-sm-6 item">
                 <div class="row">
                     <div class="col-md-12 col-lg-5">
-                        <img class="img-fluid" src={% if p.mainImage is not None %}{{ p.mainImage }}{% else %}{% static 'img/noImage.png' %}{% endif %}>
+                        {% if p.mainImage is not None %}
+                            <img class="img-fluid" src="{{ p.mainImage }}">
+                        {% else %}
+                            <img class="img-fluid" src="{% static 'img/noImage.png' %}">
+                        {% endif %}
                     </div>
                     <div class="col">
                         <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">{{ p.brand }}</strong>{{ p.name }}</p>
                         <span style="font-size: 20px;"><strong>{{ p.price }}</strong></span><span>원</span>
                     </div>
-                    <a class="stretched-link" href="{% url 'detail' %}"></a>
+                    <form action="{% url 'detail' %}" method="get">
+                        <input class="d-none" type="number" name="productID" value={{ p.id }} />
+                        <input class="d-none" type="number" name="storeID" value=1 />
+                        <button class="stretched-link" type="submit" style="opacity: 0;">
+                    </form>
                 </div>
             </div>
             {% endfor %}
@@ -50,4 +58,8 @@
 {% endblock %}
 
 <!-- User JS -->
-{% block js %}{% endblock %}
+
+{% block js %}
+<script>let noImage = "{% static 'img/noImage.png' %}";</script>
+<script type="text/javascript" src="{% static 'js/product-list.js' %}"></script>
+{% endblock %}
