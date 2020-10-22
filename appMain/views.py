@@ -6,3 +6,6 @@ def home(request):
 
 def detail(request):
     return render(request, 'detail.html')
+
+def basket(request):
+    return render(request, 'basket.html')
