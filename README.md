@@ -83,6 +83,7 @@
 pip install django
 pip install Pillow
 pip install djangorestframework
+pip install requests
 ```
 
 #### requirement 생성 및 설치
