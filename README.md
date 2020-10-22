@@ -74,6 +74,7 @@
 ```bash
 pip install django
 pip install Pillow
+pip install djangorestframework
 ```
 
 #### requirement 생성 및 설치
@@ -123,6 +124,8 @@ static 파일 모으기: `python manage.py collectstatic`
 app 만들기: `python manage.py startapp (앱이름)`
 
 관리자 만들기: `python manage.py createsuperuser`
+
+관리자 편하게 만들기: `python manage.py createsuperuser --email admin@example.com --username admin`
 
 #### 만든 계정 종류(아이디/비번)
 superuser: admin/admin, 

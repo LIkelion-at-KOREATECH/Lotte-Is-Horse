@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'appMain.apps.AppmainConfig',
-    'appUser.apps.AppuserConfig',
+    'appMain',
+    'appUser',
+    'rest_framework',
     'model.apps.ModelConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -134,3 +135,9 @@ STATIC_ROOT = BASE_DIR / 'static'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+    ]
+}
