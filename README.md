@@ -76,6 +76,12 @@ pip install django
 pip install Pillow
 ```
 
+#### requirement 생성 및 설치
+```bash
+pip freeze > requirements.txt
+pip install -r requirements.txt
+```
+
 #### html 기본 형식
 ```html
 {% extends 'base.html' %}
@@ -102,18 +108,14 @@ find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
 find . -path "*/migrations/*.pyc"  -delete
 ```
 `db.sqlite3` 삭제
+
+#### 데이터베이스 생성
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
 #### 명령어 모음
-requirement 생성 및 설치
-```bash
-pip freeze > requirements.txt
-pip install -r requirements.txt
-```
-
 가상환경 실행: `. myvenv/Scripts/activate`
 
 static 파일 모으기: `python manage.py collectstatic`
@@ -121,12 +123,6 @@ static 파일 모으기: `python manage.py collectstatic`
 app 만들기: `python manage.py startapp (앱이름)`
 
 관리자 만들기: `python manage.py createsuperuser`
-
-DB 생성: 
-```bash
-python manage.py makemigrations
-python manage.py migrate
-```
 
 #### 만든 계정 종류(아이디/비번)
 superuser: admin/admin, 
