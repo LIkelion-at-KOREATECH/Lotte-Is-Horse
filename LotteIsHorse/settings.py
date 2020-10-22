@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'appMain.apps.AppmainConfig',
-    'appUser.apps.AppuserConfig',
+    'appMain',
+    'appUser',
+    'rest_framework',
     'model.apps.ModelConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -117,16 +118,26 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
+# Static files (CSS, JavaScript, Images, Fonts)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "LotteIsHorse" / "static",
-    BASE_DIR / "appMain" / "static",
-    BASE_DIR / "appUser" / "static",
+    BASE_DIR / 'LotteIsHorse' / 'static',
+    BASE_DIR / 'appMain' / 'static',
+    BASE_DIR / 'appUser' / 'static',
 ]
 
+STATIC_ROOT = BASE_DIR / 'static'
 
-STATIC_ROOT = BASE_DIR / "static"
+# Media files
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = BASE_DIR / 'media'
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAdminUser',
+    ]
+}
