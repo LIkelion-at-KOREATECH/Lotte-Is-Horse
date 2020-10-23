@@ -44,11 +44,12 @@
                         <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">{{ p.brand }}</strong>{{ p.name }}</p>
                         <span style="font-size: 20px;"><strong>{{ p.price }}</strong></span><span>원</span>
                     </div>
-                    <form action="{% url 'detail' %}" method="get">
+                    <a class="stretched-link" href="{% url 'detail' %}?product={{p.id}}&store="></a>
+                    <!-- <form action="{% url 'detail' %}" method="get">
                         <input class="d-none" type="number" name="productID" value={{ p.id }} />
                         <input class="d-none" type="number" name="storeID" value=1 />
                         <button class="stretched-link" type="submit" style="opacity: 0;">
-                    </form>
+                    </form> -->
                 </div>
             </div>
             {% endfor %}

@@ -8,9 +8,9 @@ def home(request):
 
 def detail(request):
     requestGet = request.GET
-    store = requests.get('http://localhost:8000/api/store?id=' + requestGet.get('storeID'), auth=('admin', 'admin'))
-    product = requests.get('http://localhost:8000/api/product?id=' + requestGet.get('productID'), auth=('admin', 'admin'))
-    sell = requests.get('http://localhost:8000/api/sell?store=' + requestGet.get('storeID') + '&product=' + requestGet.get('productID'), auth=('admin', 'admin'))
+    store = requests.get('http://localhost:8000/api/store?id=' + requestGet.get('store'), auth=('admin', 'admin'))
+    product = requests.get('http://localhost:8000/api/product?id=' + requestGet.get('product'), auth=('admin', 'admin'))
+    sell = requests.get('http://localhost:8000/api/sell?store=' + requestGet.get('store') + '&product=' + requestGet.get('product'), auth=('admin', 'admin'))
     
     returnDic = {
         'store': store.json(),
