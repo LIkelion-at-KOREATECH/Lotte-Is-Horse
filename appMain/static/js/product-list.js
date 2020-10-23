@@ -1,8 +1,8 @@
-let selectStoreName = "롭스 병천점";
+let selectStoreName = "롭스 건대점";
 console.log(csrf_token);
 
 $.ajax({
-    url: home,
+    //url: home,
     method: "POST",          // HTTP 요청 방식(GET, POST)
     dataType: "json",           // 서버에서 보내줄 데이터의 타입(default값으로 json으로 되어있다.)
     data: {'storeName':selectStoreName, 'csrfmiddlewaretoken': csrf_token}   // HTTP 요청과 함께 서버로 보낼 데이터
