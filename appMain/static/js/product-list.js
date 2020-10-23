@@ -1,5 +1,4 @@
 let selectStoreName = "롭스 건대점";
-console.log(csrf_token);
 
 $.ajax({
     //url: home,
@@ -36,8 +35,6 @@ $.ajax({
         html += `<button class="stretched-link" type="submit" style="opacity: 0;"></form>`
 
         $("#product-list").append(html);
-
-        
     });
 
 }).fail((xhr, data) => {     // HTTP 요청 실패 시, 오류와 상태에 관한 정보가 fail() 메소드로 전달
