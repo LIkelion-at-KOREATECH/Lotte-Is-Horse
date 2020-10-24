@@ -88,10 +88,8 @@ pip install django-filter
 ```
 
 #### requirement 생성 및 설치
-```bash
-pip freeze > requirements.txt
-pip install -r requirements.txt
-```
+생성 `pip freeze > requirements.txt`
+설치 `pip install -r requirements.txt`
 
 #### html 기본 형식
 ```html
