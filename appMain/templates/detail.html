@@ -8,22 +8,10 @@
 
 <!-- Main Content -->
 {% block content %}
-<!-- {% for i in response %}
-    {% if i.mainImage is not None %} <img class="img-fluid" src="{{ i.mainImage }}"> {% endif %}
-    {% if i.detailImage0 is not None %} <img class="img-fluid" src="{{ i.detailImage0 }}"> {% endif %}
-    {% if i.detailImage1 is not None %} <img class="img-fluid" src="{{ i.detailImage1 }}"> {% endif %}
-    {% if i.detailImage2 is not None %} <img class="img-fluid" src="{{ i.detailImage2 }}"> {% endif %}
-    {% if i.detailImage3 is not None %} <img class="img-fluid" src="{{ i.detailImage3 }}"> {% endif %}
-    {% if i.detailImage4 is not None %} <img class="img-fluid" src="{{ i.detailImage4 }}"> {% endif %}
-    {% if i.detailImage5 is not None %} <img class="img-fluid" src="{{ i.detailImage5 }}"> {% endif %}
-    {% if i.detailImage6 is not None %} <img class="img-fluid" src="{{ i.detailImage6 }}"> {% endif %}
-    {% if i.detailImage7 is not None %} <img class="img-fluid" src="{{ i.detailImage7 }}"> {% endif %}
-    {% if i.detailImage8 is not None %} <img class="img-fluid" src="{{ i.detailImage8 }}"> {% endif %}
-    {% if i.detailImage9 is not None %} <img class="img-fluid" src="{{ i.detailImage9 }}"> {% endif %}
-{% endfor %} -->
+
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <div class="row">
-        <div class="col-md-4"><img class="img-fluid" src="{% static 'img/product1/product1.jpg' %}"></div>
+        <div class="col-md-4"><img class="img-fluid" src="{{ mainImage }}"></div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-3">
@@ -34,17 +22,11 @@
                     <p>재고</p>
                 </div>
                 <div class="col">
-                    <p>제이숲</p>
-                    <p>블랙제이 스파토닉 헤어에센스 50ml<br></p>
-                    <p>19,900원</p>
-                    <p><select>
-                        <option value="1" selected="">롭스 건대점</option>
-                        <option value="2">롭스 왕십리역사점</option>
-                        <option value="3">롭스 월드몰1호점</option>
-                    </select></p>
-                        <i class="fa fa-minus-square"></i><span style="margin-right: 10px;margin-left: 10px;">3</span>
-                    <i
-                        class="fa fa-plus-square"></i>
+                    <p>{{ brand }}</p>
+                    <p>{{ name }}<br></p>
+                    <p>{{ price }}원</p>
+                    <p>{{ storeName }}</p>
+                    <p>{{ count }}</p>
                 </div>
             </div>
             <div class="row">
@@ -70,14 +52,17 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="detailProduct" role="tabpanel" aria-labelledby="home-tab">
-            <img class="img-fluid" src="{% static 'img/product1/detail1.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail2.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail3.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail4.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail5.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail6.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail7.jpg' %}" />
-            <img class="img-fluid" src="{% static 'img/product1/detail8.jpg' %}" />
+            {% if mainImage is not None %} <img class="img-fluid" src="{{ mainImage }}"> {% endif %}
+            {% if detailImage0 != "null" %} <img class="img-fluid" src="{{ detailImage0 }}"> {% endif %}
+            {% if detailImage1 != "null" %} <img class="img-fluid" src="{{ detailImage1 }}"> {% endif %}
+            {% if detailImage2 != "null" %} <img class="img-fluid" src="{{ detailImage2 }}"> {% endif %}
+            {% if detailImage3 != "null" %} <img class="img-fluid" src="{{ detailImage3 }}"> {% endif %}
+            {% if detailImage4 != "null" %} <img class="img-fluid" src="{{ detailImage4 }}"> {% endif %}
+            {% if detailImage5 != "null" %} <img class="img-fluid" src="{{ detailImage5 }}"> {% endif %}
+            {% if detailImage6 != "null" %} <img class="img-fluid" src="{{ detailImage6 }}"> {% endif %}
+            {% if detailImage7 != "null" %} <img class="img-fluid" src="{{ detailImage7 }}"> {% endif %}
+            {% if detailImage8 != "null" %} <img class="img-fluid" src="{{ detailImage8 }}"> {% endif %}
+            {% if detailImage9 != "null" %} <img class="img-fluid" src="{{ detailImage9 }}"> {% endif %}
         </div>
 
         <div class="tab-pane fade" id="reviewProduct" role="tabpanel" aria-labelledby="profile-tab">
