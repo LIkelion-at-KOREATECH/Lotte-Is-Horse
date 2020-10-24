@@ -33,3 +33,11 @@ class Sell(models.Model):
 
     def __str__(self):
         return self.store.name + " - " + self.product.name
+
+
+class Basket(models.Model):
+    store = models.ForeignKey(Store, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.name

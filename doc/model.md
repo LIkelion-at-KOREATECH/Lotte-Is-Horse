@@ -34,3 +34,9 @@ true면 판매자(지점장) -> Store에 연결
 제품 개수
 
 ---
+
+### Basket(장바구니)
+##### store : Store
+지점연결
+##### product : Product
+제품연결
