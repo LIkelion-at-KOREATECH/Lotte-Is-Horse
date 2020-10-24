@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'channels',
+    'appChat',
     'appMain.apps.AppmainConfig',
     'appUser.apps.AppuserConfig',
     'model.apps.ModelConfig',
@@ -130,3 +132,16 @@ STATICFILES_DIRS = [
 
 
 STATIC_ROOT = BASE_DIR / "static"
+
+# Channels
+ASGI_APPLICATION = 'LotteIsHorse.routing.application'
+
+# Channel layers
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}
