@@ -30,7 +30,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col"><button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button><button class="btn btn-outline-secondary btn-block" type="button">당일배송</button><button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
+                <div class="col">
+                    <button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button>
+                    <button class="btn btn-outline-secondary btn-block" type="button">당일배송</button>
+                    <form action="" method="get">
+                        <input name="{{key}}" value="{{vlaue}}"/>
+                        <button class="btn btn-outline-secondary btn-block" type="submit" href="{% url 'basket' %}">장바구니</button>
+                    </form>
+                    <button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
                     <button
                         class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
                 </div>
