@@ -1,10 +1,16 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        center: new kakao.maps.LatLng(37.497909, 127.027454),//33.450701, 126.570667), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨 
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+let nowMarker = new kakao.maps.Marker({ map: map });
+let nowInfoWindow = new kakao.maps.InfoWindow({
+    content: '<div style="width:150px;text-align:center;padding:6px 0;">검색한 위치입니다!</div>'
+});
+let lohbsMarkers = []
 
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 if (navigator.geolocation) {
@@ -19,16 +25,16 @@ if (navigator.geolocation) {
             message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
 
         // 마커와 인포윈도우를 표시합니다
-        displayMarker(locPosition, message);
+        nowMarker = displayMarker(locPosition, message);
 
     });
 
 } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
 
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
-        message = 'geolocation을 사용할수 없어요..'
+    var locPosition = new kakao.maps.LatLng(37.497909, 127.027454), // 강남역 주소
+        message = '현재 위치찾기 기능이 불안정합니다.'
 
-    displayMarker(locPosition, message);
+    nowMarker = displayMarker(locPosition, message);
 }
 
 // 지도에 마커와 인포윈도우를 표시하는 함수입니다
@@ -54,6 +60,8 @@ function displayMarker(locPosition, message) {
 
     // 지도 중심좌표를 접속위치로 변경합니다
     map.setCenter(locPosition);
+
+    return marker;
 }
 
 // 마커를 표시할 위치와 title 객체 배열입니다 
@@ -509,7 +517,7 @@ var positions = [{
 
 ];
 
-var imageSrc = 'static/img/gps.jpg', // 마커이미지의 주소입니다    // https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png 
+var imageSrc ='static/img/gps.jpg', // 마커이미지의 주소입니다    // https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png 
     imageSize = new kakao.maps.Size(64, 69), // 마커이미지의 크기입니다
     imageOption = {
         offset: new kakao.maps.Point(27, 69)
@@ -524,48 +532,21 @@ for (var i = 0; i < positions.length; i++) {
     var marker = new kakao.maps.Marker({
         map: map, // 마커를 표시할 지도
         image: markerImage,
-        position: positions[i].latlng // 마커의 위치
+        position: positions[i].latlng, // 마커의 위치
+        title: positions[i].title
     });
-
-    for (let item of positions) {
-    
-    Latdis = (item.latlng.getLat() - coords.getLat()) * 92 ;
-    Lngdis = (item.latlng.getLng() - coords.getLng()) * 114 ;
-
-    cal = Math.sqrt(Latdis * Lastdis + Lngdis * Lngdis) ;
-
-    if (cal < 5 ){
-
-        var imageSrc = 'static/img/gps.jpg',   
-        imageSize = new kakao.maps.Size(64, 69), 
-        imageOption = {
-            offset: new kakao.maps.Point(27, 69)
-        }; 
-
-    }
-    else {
-        var imageSrc = 'static/img/gpsDie.jpg',   
-        imageSize = new kakao.maps.Size(64, 69), 
-        imageOption = {
-            offset: new kakao.maps.Point(27, 69)
-        }; 
-
-    }
-    
-    
-    
-}
 
     // 마커에 표시할 인포윈도우를 생성합니다 
     var infowindow = new kakao.maps.InfoWindow({
         content: "<div>" + positions[i].title + "</div>" // 인포윈도우에 표시할 내용
     });
 
+    lohbsMarkers.push(marker);
+
     // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
     // 이벤트 리스너로는 클로저를 만들어 등록합니다 
     // for문에서 클로저를 만들어 주지 않으면 마지막 마커에만 이벤트가 등록됩니다
     kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow)); // -> 마우스 올렸을 때
-    kakao.maps.event.addListener(marker, 'click', makeClickListener(map, marker, infowindow));
     kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow)); // -> 마우스 밖에 있을 때
 }
 
@@ -576,13 +557,60 @@ function makeOverListener(map, marker, infowindow) {
     };
 }
 
-//  클릭을 하게 함
-function makeClickListener(map, marker, infowindow) {
+//  클릭을 하게 하고, 지점 위치 연동
+function makeClickListener(map, marker, infowindow, data) {
     return function () {
-        alert("click 했어요");
+        let selectStoreName = data;
+
+        $("#delay-sign").removeClass("d-none");
+        $.ajax({
+            //url: home,
+            method: "POST",          // HTTP 요청 방식(GET, POST)
+            dataType: "json",           // 서버에서 보내줄 데이터의 타입(default값으로 json으로 되어있다.)
+            data: {'storeName':selectStoreName, 'csrfmiddlewaretoken': csrf_token}   // HTTP 요청과 함께 서버로 보낼 데이터
+        }).done(data => {    // HTTP 요청 성공 시, 요청한 데이터가 done() 메소드로 전달
+            //alert('성공!')
+            //console.log(data.products)
+            $("#product-list").empty();
+            data.products.forEach((product, idx) => {
+                //console.log(product)
+                let mainImage;
+                if (!product.mainImage) mainImage = noImage;
+                else mainImage = product.mainImage;
+
+                let html = `
+                <div class="col-sm-6 item">
+                    <div class="row">
+                        <div class="col-md-12 col-lg-5">
+                            <img class="img-fluid" src="`+mainImage+`">
+                        </div>
+                    <div class="col">
+                        <p class="description" style="font-size: 16px;"><strong style="margin-right: 5px;">`+product.brand+`</strong>`+product.name+`</p>
+                        <span style="font-size: 20px;"><strong>`+product.price+`</strong></span><span>원</span>
+                    </div>
+                    <form action="`+detail+`" method="get">
+                    `
+                // <a class="stretched-link" href="`+detail+`?product=`+product.id+`&store=`+product.store+`"></a>
+                for (const key in product) {
+                    html += `<div class="d-none"><label>`+key+`</label><input name="`+key+`" value="`+product[key]+`" /></div>`;
+                }
+
+                html += `<button class="stretched-link" type="submit" style="opacity: 0;"></form>`
+
+                $("#product-list").append(html);
+            });
+
+            $("#delay-sign").addClass("d-none");
+        }).fail((xhr, data) => {     // HTTP 요청 실패 시, 오류와 상태에 관한 정보가 fail() 메소드로 전달
+            alert('주문한 가능한 상품이 없습니다!')
+        }).always((xhr, data) => {   // HTTP 요청의 성공여부와는 상관없이 언제나 always()메소드 실행
+            //alert('항상!')
+        })
+
 
     };
 }
+
 
 // 인포윈도우를 닫는 클로저를 만드는 함수입니다 
 function makeOutListener(infowindow) {
@@ -591,86 +619,71 @@ function makeOutListener(infowindow) {
     };
 }
 
-for (let item of positions) {
-    console.log(item.title, item.latlng.getLat(), item.latlng.getLng());
-}
+// for (let item of positions) {
+//     console.log(item.title, item.latlng.getLat(), item.latlng.getLng());
+// }
 
 // 주소-좌표 변환 객체를 생성합니다
 var geocoder = new kakao.maps.services.Geocoder();
 
 
-function mapSearchFunction() {
-    var x = document.getElementById("myInput").value;
-    document.getElementById("out").innerHTML = "You wrote: " + x;
-}
+// function mapSearchFunction() {
+//     var x = document.getElementById("myInput").value;
+//     document.getElementById("out").innerHTML = "You wrote: " + x;
+// }
 
 
 // 주소로 좌표를 검색합니다
 document.querySelector('#go-button').addEventListener('click', () => {
-
-    geocoder.addressSearch(document.getElementById('myInput').value, function (result, status) {
+    geocoder.addressSearch(document.getElementById('myInput').value, function(result, status) {
         // 정상적으로 검색이 완료됐으면 
         if (status === kakao.maps.services.Status.OK) {
-
-            var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-            // -> 내가 찍은 위치의 위도, 경도 : console.log(coords.getLat(), coords.getLng());
-            // 결과값으로 받은 위치를 마커로 표시합니다
-            var marker = new kakao.maps.Marker({
-                map: map,
-                position: coords
-            });
-
-            // 인포윈도우로 장소에 대한 설명을 표시합니다
-            var infowindow = new kakao.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;">검색한 위치</div>'
-            });
-            infowindow.open(map, marker);
-
+            let coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            
+            nowMarker.setPosition(coords);
+            nowInfoWindow.open(map, nowMarker);
+            
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
+            
+            for (let item of lohbsMarkers) {     
+                Latdis = (item.getPosition().getLat() - coords.getLat()) * 92 ;
+                Lngdis = (item.getPosition().getLng() - coords.getLng()) * 114 ;
+                
+                cal = Math.sqrt(Latdis * Latdis + Lngdis * Lngdis) ;
+
+                imageSrc = 'static/img/gps.jpg',   
+                imageSize = new kakao.maps.Size(64, 69), 
+                imageOption = {
+                    offset: new kakao.maps.Point(27, 69)
+                };
+                var aliveMarkerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+
+                dieImageSrc = 'static/img/gpsDie.png',   
+                dieImageSize = new kakao.maps.Size(64, 69), 
+                dieImageOption = {
+                    offset: new kakao.maps.Point(27, 69)
+                };
+                var dieMarkerImage = new kakao.maps.MarkerImage(dieImageSrc, dieImageSize, dieImageOption);
+
+                if (cal < 3 ) {
+                    item.setImage(aliveMarkerImage);
+                    kakao.maps.event.removeListener(item, 'click', alertFunction());
+                    kakao.maps.event.addListener(item, 'click', makeClickListener(map, marker, infowindow, item.getTitle()));
+                } else {
+                    item.setImage(dieMarkerImage);
+                    kakao.maps.event.removeListener(item, 'click', makeClickListener(map, marker, infowindow, item.getTitle()));
+                    kakao.maps.event.addListener(item, 'click', alertFunction());
+                }
+            }
         }
-
-
-
     });
+});
 
-
-})
-
-
-for (let item of positions) {
-    
-    Latdis = (item.latlng.getLat() - coords.getLat()) * 92 ;
-    Lngdis = (item.latlng.getLng() - coords.getLng()) * 114 ;
-
-    cal = Math.sqrt(Latdis * Latdis + Lngdis * Lngdis) ;
-
-
-    if (cal < 5 ){
-
-        var imageSrc = 'static/img/gps.jpg',   
-        imageSize = new kakao.maps.Size(64, 69), 
-        imageOption = {
-            offset: new kakao.maps.Point(27, 69)
-        }; 
-
-    }
-    else {
-        var imageSrc = 'static/img/gpsDie.jpg',   
-        imageSize = new kakao.maps.Size(64, 69), 
-        imageOption = {
-            offset: new kakao.maps.Point(27, 69)
-        }; 
-
-    }
-
-           
-    
+function alertFunction() {
+    return function () {
+        alert('주문할 수 없는 거리의 매장입니다! 다른 매장을 선택해주세요!');
+    };
 }
-
-
-
-
-
 
 // document.getElementById(myInput).value
