@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}예약하기{% endblock %}
+
+<!-- User CSS -->
+{% block css %}{% endblock %}
+
+<!-- Main Content -->
+{% block content %}
+
+<div class="container border-bottom" style="padding-bottom: 15px;">
+    <br>
+    {% for my_bs in Bs %}
+    <div class="row">
+        <div class="col-md-2">
+            {% if mainImage != "null" %} <img class="img-fluid" src="{{ my_bs.pic }}">
+            {% else %} <img class="img-fluid" src="{% static 'img/noImage.png' %}">
+            {% endif %}
+        </div>
+        
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-3">
+                    <p><strong>브랜드</strong></p>
+                    <p><strong>제품명</strong></p>
+                    <p><strong>가격</strong></p>
+                    <p><strong>매장명</strong></p>
+                    <p><strong>개수</strong></p>
+                </div>
+                <div class="col">
+                    <p>{{ my_bs.brands }}</p>
+                    <p>{{ my_bs.name }}<br></p>
+                    <p>{{ my_bs.price }}원</p>
+                    <p>{{ my_bs.storeName }}</p>
+                    <p>{{ my_bs.count }}</p>
+                    <!-- 장바구니 아니고 개별임 -->
+                    <!-- 장바구니일때 - 개수는? 장바구니가 만들어지면 받아오기 -->
+                    <!-- {{ amount }} -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+
+<div class="container border-bottom" style="padding-bottom: 15px;">
+    <br>
+    <div class="row">
+        <div class="col-3">
+            <p><strong>총 가격</strong></p>
+        </div>
+        <div class="col">
+            <p>{{ my_bs.price }} 원</p>
+            <!-- 장바구니일때 -->
+            <!-- <p>{{ priceSum }}원</p> -->
+            <!-- js를 통해 모든 price 더하는 연산 - 장바구니 나오면 할 것 -->
+            <!-- 장바구니일 때: js를 통해 장바구니 매장 명 반복 -->
+            <p id="reservation-date"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div>
+                <p class="text-danger">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-outline-secondary btn-block" type="button">결제하기</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

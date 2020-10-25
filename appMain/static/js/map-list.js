@@ -612,7 +612,7 @@ for (let item of positions) {
 
     cal = Math.sqrt(Latdis * Latdis + Lngdis * Lngdis) ;
 
-    console.log(Latdis, Lngdis, cal);
+    
 }
 
 

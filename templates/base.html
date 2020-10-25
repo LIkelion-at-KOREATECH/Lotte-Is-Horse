@@ -33,12 +33,17 @@
 <body>
     <!-- Header -->
     <header>
-        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="border-bottom-style: solid;border-bottom-color: rgb(255,83,15);">
+        <nav class="navbar navbar-light navbar-expand-md navigation-clean-button" style="border-bottom-style: solid;border-bottom-color: rgb(226,4,19);">
             <div class="container">
                 <span class="d-flex d-xl-flex align-items-center align-items-xl-center position-relative">
-                <a class="navbar-brand" style="color: #FF530F;font-size: 35px;margin-right: 0px;">LOTTE는</a>
-                <img src="{% static 'img/horse.svg' %}" style="width: 39px;">
-                <a class="navbar-brand stretched-link" href="{% url 'home' %}" style="color: #FF530F;font-size: 35px;">이야</a></span>
+                <a class="navbar-brand" style="color:rgb(226,4,19);font-size: 35px;margin-right: 0px;">
+
+                    <img style="height:3.5rem; border-right: 0;" src="{% static 'img/lotteIs.png' %}">
+                </a>
+                <img stlye="size: 35px;" src="{% static 'img/horse.svg' %}" style="width: 39px;">
+                <a class="navbar-brand stretched-link" href="{% url 'home' %}" style="color: rgb(226,4,19); font-size: 35px;">
+                    <img style="height:3.5rem;" class="img-fluid" src="{% static 'img/Horse.png' %}">
+                </a></span>
                 <button
                     data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1">
                     <span class="d-xl-flex align-items-xl-center sr-only">Toggle navigation</span>
@@ -47,16 +52,16 @@
                 <div class="collapse navbar-collapse" id="navcol-1">
                     <ul class="nav navbar-nav mr-auto"></ul>
                     <span class="d-flex d-xl-flex justify-content-end align-items-center align-items-xl-center navbar-text actions">
-                        <a href="https://www.lohbs.co.kr"><i class="fas fa-toggle-on"style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(255,83,15);"></i></a>
+                        <a href="https://www.lohbs.co.kr"><i class="fas fa-toggle-on"style="font-size: 30px;width: auto;height: auto;margin-right: 16px;margin-top: 0;padding-top: 0;color: rgb(226,4,19);"></i></a>
                         {% if user.is_authenticated %}
                         <a class="login" href="javascript:{document.getElementById('logout').submit()}">Logout</a>
                         <form id="logout" method="POST" action="{% url 'logout' %}">
                             {% csrf_token %} <input type="hidden" />
                         </form>
-                        <a class="btn btn-light action-button" role="button" href="#" style="background: rgb(255,83,15);">Mypage</a>
+                        <a class="btn btn-light action-button" role="button" href="#" style="background: rgb(226,4,19);">Mypage</a>
                         {% else %}
                         <a class="login" href="{% url 'login' %}">Log In</a>
-                        <a class="btn btn-light action-button" role="button" href="{% url 'signup' %}" style="background: rgb(255,83,15);">Sign Up</a>
+                        <a class="btn btn-light action-button" role="button" href="{% url 'signup' %}" style="background: rgb(226,4,19);">Sign Up</a>
                         {% endif %}
                     </span>
                 </div>

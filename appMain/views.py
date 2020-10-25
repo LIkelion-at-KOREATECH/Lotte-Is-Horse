@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from django.http.response import HttpResponse
+from .models import Basket
 
 from LotteIsHorse.settings import BASE_URL  # url 주소
 
@@ -10,12 +11,16 @@ def home(request):
     if request.method == "POST":
         try:
             if (request.POST.get('storeName') == ""):
+                
                 raise
             store = requests.get(BASE_URL + 'store?name=' + request.POST.get('storeName'), auth=('admin', 'admin')).json()
+            print(store)
             sells = requests.get(BASE_URL + 'sell?store=' + str(store[0]['id']), auth=('admin', 'admin')).json()
+            print("@@@@@@@@@@@2")
             products = []
             for sell in sells:
                 products.extend(requests.get(BASE_URL + 'product?id=' + str(sell['product']), auth=('admin', 'admin')).json())
+            print("@@@@@@@@@@@3")
 
             # 하나로 합치기
             for product in products:
@@ -30,12 +35,13 @@ def home(request):
                 'products': products
             }
         
-            # 출력
+            #출력
+            # print("@@@@@@@@@@@")
             # for product in products:
             #     print("\n===========" + product['name'])
             #     for i in product:
             #         print(str(i) + " : " + str(product[i]))
-
+        
             return JsonResponse(responseDic)
         except:
             return
@@ -54,5 +60,31 @@ def detail(request):
     # 출력
     # for key, value in responseDic.items():
     #     print(str(key) + " : " + str(value))
-    
     return render(request, 'detail.html', responseDic)
+
+
+def basket(request):
+    responseDic = {}
+    for key, value in request.GET.items():
+        responseDic[key] = value
+
+
+    
+    Bs = Basket.objects.all()
+    for old_bs in Bs:
+        if old_bs.name == responseDic['name']:
+            Bs = Basket.objects.get(old_bs.name == responseDic['name'])
+            Bs.count =Bs.count + 1 
+            Bs.save()
+            print('1')
+            break
+        else:
+            Bss = Basket(brands= responseDic['brand'] ,name=responseDic['name'], price=responseDic['price'],storeName=responseDic['storeName'], count=1,pic=responseDic['mainImage'])
+            Bss.save()
+            print('2')
+            break
+    if not Bs:
+        Bss = Basket(brands= responseDic['brand'] ,name=responseDic['name'], price=responseDic['price'],storeName=responseDic['storeName'], count=1,pic=responseDic['mainImage'])
+        Bss.save()
+        print('3')
+    return render(request, 'basket.html', {'Bs':Bs})

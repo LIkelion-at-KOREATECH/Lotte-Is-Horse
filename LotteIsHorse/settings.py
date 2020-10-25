@@ -14,7 +14,6 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-#BASE_URL = "https://lotte-is-horse-api-server.herokuapp.com/api/"
 BASE_URL = "http://3.35.243.185:8000/api/"
 
 # Quick-start development settings - unsuitable for production
@@ -130,6 +129,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'appMain' / 'static',
     BASE_DIR / 'appUser' / 'static',
     BASE_DIR / 'appChat' / 'static',
+    BASE_DIR / 'apReservation' / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR / 'static'
