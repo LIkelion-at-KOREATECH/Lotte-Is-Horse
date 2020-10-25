@@ -23,11 +23,6 @@ from django.conf.urls.static import static
 # Including another URLconf
 import appMain
 import appUser
-<<<<<<< HEAD
-import appReservation
-import model
-=======
->>>>>>> dev
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -35,10 +30,6 @@ urlpatterns = [
     # Including another URLconf
     path('', include('appMain.urls')),
     path('', include('appUser.urls')),
-<<<<<<< HEAD
     path('', include('appReservation.urls')),
     path('api/', include('model.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-=======
-]
->>>>>>> dev
