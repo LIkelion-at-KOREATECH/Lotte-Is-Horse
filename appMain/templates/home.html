@@ -8,11 +8,16 @@
 
 <!-- Main Content -->
 {% block content %}
-<div class="map-clean"><iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="400" style="height: 450px;"></iframe></div>
-<form class="mx-auto" style="width: 800px;max-width: 100%;">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b2022d4ef47d44e85a6a9282f8c0fda5&libraries=services"></script>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b2022d4ef47d44e85a6a9282f8c0fda5&libraries=services"></script> -->
+<div id = "map" class="map-clean"><iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" width="100%" height="400" style="height: 450px;"></iframe></div>
+<!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b2022d4ef47d44e85a6a9282f8c0fda5"></script>
+<script type="text/javascript" src="{% static 'js/map-list.js' %}"></script> -->
+
+<div class="mx-auto" style="width: 800px;max-width: 100%;">
     <div class="input-group">
-        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text">
-        <div class="input-group-append"><button class="btn btn-primary btn-dark">Go!</button></div>
+        <div class="input-group-prepend"><span class="input-group-text"><i class="fa fa-search"></i></span></div><input class="form-control" type="text" id="myInput" oninput="mapSearchFunction()">
+        <div class="input-group-append"><button id = "go-button" class="btn btn-primary btn-dark">Go!</button></div>
     </div>
     <div class="d-flex align-items-xl-center">
         <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;"><i class="material-icons">person_pin_circle</i>실시간 내 위치</p>
@@ -24,10 +29,12 @@
         <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">매장별</p>
         <p class="d-xl-flex align-items-xl-center" style="margin-right: 5px;margin-left: 5px;font-size: 16px;">|</p>
         <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">제품별</p>
-    </div>
-</form>
+    </div>  
+</div>
 <div class="projects-horizontal">
     <h1 style="font-size: 20px;margin-bottom: 16px;text-align: center;">⭐제품목록⭐ 근처의 업체를 확인하세요!</h1>
+    
+
     <div class="text-center d-none" id="delay-sign">
         <p><strong class="text-warning">일하는 중.. 조금만 기다려주세요!</strong></p>
         <p class="spinner-border text-warning" role="status">
@@ -50,6 +57,9 @@
     const csrf_token = "{{csrf_token}}";
     const noImage = "{% static 'img/noImage.png' %}";
 </script>
+
 <script type="text/javascript" src="{% static 'js/product-list.js' %}"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b2022d4ef47d44e85a6a9282f8c0fda5"></script>
+<script type="text/javascript" src="{% static 'js/map-list.js' %}"></script>
 
 {% endblock %}
