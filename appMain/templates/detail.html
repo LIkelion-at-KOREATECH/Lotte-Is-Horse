@@ -11,6 +11,10 @@
 
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <br>
+    <div style="border: 0; padding: 0;" class="col-md-3">
+        <img class="img-fluid" src="{% static 'img/detail-title.png' %}">
+    </div>
+    <br>
     <div class="row">
         <div class="col-md-4">
             {% if mainImage != "null" %} <img class="img-fluid" src="{{ mainImage }}">
@@ -20,11 +24,11 @@
         <div class="col-md-8">
             <div class="row">
                 <div class="col-3">
-                    <p>브랜드</p>
-                    <p>제품명</p>
-                    <p>가격</p>
-                    <p>매장명</p>
-                    <p>재고</p>
+                    <p><strong>브랜드</strong></p>
+                    <p><strong>제품명</strong></p>
+                    <p><strong>가격</strong></p>
+                    <p><strong>매장명</strong></p>
+                    <p><strong>재고</strong></p>
                 </div>
                 <div class="col">
                     <p>{{ brand }}</p>
@@ -38,24 +42,49 @@
                 <div class="col">
                     <button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button>
                     <button class="btn btn-outline-secondary btn-block" type="button">당일배송</button>
+                    <form action="{% url 'basket' %}" method="get">
+                        <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
+                        <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
+                        <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
+                        <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" />
+                        </div>
+                        <div class="d-none"><label>count</label><input name="count" value="{{ count }}" /></div>
+                        <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" />
+                        </div>
+                        <button class="btn btn-outline-secondary btn-block" type="submit">장바구니</button>
+                    </form>
                     <div style="padding-bottom: 0.5rem;">
-                        <form action="{% url 'basket' %}" method="get">
+                        <form action="{% url 'reservation' %}" method="get">
                             <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
                             <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
                             <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
-                            <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" /></div>
-                            <div class="d-none"><label>count</label><input name="count" value="{{ count }}" /></div>
-                            <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" /></div>
-                            <button class="btn btn-outline-secondary btn-block" type="submit">장바구니</button>
+                            <div class="d-none"><label>storeName</label><input name="storeName"
+                                    value="{{ storeName }}" /></div>
+                            <div class="d-none"><label>sell</label><input name="sell" value="{{ sell }}" /></div>
+                            <div class="d-none"><label>mainImage</label><input name="mainImage"
+                                    value="{{ mainImage }}" /></div>
+                            <button class="btn btn-outline-secondary btn-block" type="submit">예약하기(방문구매)</button>
                         </form>
                     </div>
-                    <button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
-                    <button
-                        class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
+                    <div style="padding-bottom: 0.5rem;">
+                        <form action="{% url 'delivery' %}" method="get">
+                            <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
+                            <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
+                            <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
+                            <div class="d-none"><label>storeName</label><input name="storeName"
+                                    value="{{ storeName }}" /></div>
+                            <div class="d-none"><label>sell</label><input name="sell" value="{{ sell }}" /></div>
+                            <div class="d-none"><label>mainImage</label><input name="mainImage"
+                                    value="{{ mainImage }}" /></div>
+                            <button class="btn btn-outline-secondary btn-block" type="submit">달려가마(1시간 배달)</button>
+                        </form>
+                    </div>
                 </div>
+                <button class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
             </div>
         </div>
     </div>
+</div>
 </div>
 <div class="container">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -105,7 +134,8 @@
                     <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"></span>
                     <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"></span>
                 </div>
-                <p>요즘 세니타이저 하나씩은 꼭 필수로<br />가지고 다닙니다.<br />색상과 케이스 휴대용 걸이까지<br />너무 귀여워서 주문했어요~<br />각각 향기가 있고 저한테는 좀 진한것
+                <p>요즘 세니타이저 하나씩은 꼭 필수로<br />가지고 다닙니다.<br />색상과 케이스 휴대용 걸이까지<br />너무 귀여워서 주문했어요~<br />각각 향기가 있고 저한테는 좀
+                    진한것
                     같아요<br />가방에 달고 싶은데 고무연결하는게<br />힘드네요~<br /><br />무향, 무취를 더 선호합니다..<br /></p>
             </div>
 
@@ -115,12 +145,18 @@
                         <span class="form-text text-left text-muted">평점을 입력해주세요</span>
                         <div class="form-group">
                             <div class="text-left star-rating" style="font-size: 25px; color: #f9dd16;">
-                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="1"></span>
-                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="2"></span>
-                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="3"></span>
-                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="4"></span>
-                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;" data-rating="5"></span>
-                                <input class="form-control rating-value" type="hidden" id="rate" name="Rating" value="5" />
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"
+                                    data-rating="1"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"
+                                    data-rating="2"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"
+                                    data-rating="3"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"
+                                    data-rating="4"></span>
+                                <span class="fa fa-star-o" style="padding-right: 1px; padding-left: 1px;"
+                                    data-rating="5"></span>
+                                <input class="form-control rating-value" type="hidden" id="rate" name="Rating"
+                                    value="5" />
                             </div>
                         </div>
                     </div>
