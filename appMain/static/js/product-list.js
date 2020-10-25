@@ -1,5 +1,6 @@
-let selectStoreName = "롭스 건대점";
+let selectStoreName = "서울 롭스 강남점";
 
+$("#delay-sign").removeClass("d-none");
 $.ajax({
     //url: home,
     method: "POST",          // HTTP 요청 방식(GET, POST)
@@ -37,6 +38,7 @@ $.ajax({
         $("#product-list").append(html);
     });
 
+    $("#delay-sign").addClass("d-none");
 }).fail((xhr, data) => {     // HTTP 요청 실패 시, 오류와 상태에 관한 정보가 fail() 메소드로 전달
     alert('실패!')
 }).always((xhr, data) => {   // HTTP 요청의 성공여부와는 상관없이 언제나 always()메소드 실행
