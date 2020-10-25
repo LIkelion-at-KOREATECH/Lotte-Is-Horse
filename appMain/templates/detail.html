@@ -4,7 +4,7 @@
 {% block title %}상품소개{% endblock %}
 
 <!-- User CSS -->
-{% block css %}{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/a_teg.css' %}">{% endblock %}
 
 <!-- Main Content -->
 {% block content %}
@@ -79,7 +79,11 @@
                         </form>
                     </div>
                     <div style="padding-bottom: 0.5rem;">
-                        <button style="CURSOR:hand;" href="{% url 'chat' %}" title="근처 매장 직원과 실시간으로 소통을 할 수 있는 채팅 서비스입니다." class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
+                        <button style="CURSOR:hand;" onclick="href='{% url `chat` %}'" title="근처 매장 직원과 실시간으로 소통을 할 수 있는 채팅 서비스입니다." class="btn btn-outline-secondary btn-block" type="button">
+                            <a href="{% url 'chat' %}">
+                                실시간 연결
+                            </a>
+                        </button>
                     </div>
                 </div>
             </div>
