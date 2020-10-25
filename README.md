@@ -5,6 +5,8 @@
 2. 실시간 주문  *1시간 내 배달
 3. 회원관리
 4. 오프라인 매장 연결   *지도 API 이용
+
+[기획파일참고](./design.md)
    
 # :fire:개발규칙:fire:
 ## 컨벤션 :triangular_ruler:
@@ -66,14 +68,28 @@
 - login.html, signup.html 존재
 ###### model
 - 모델을 구현하기 위한 앱
+- api 구현
 
 #### Model 종류
 [model](doc/model.md)
 
+#### API 관리 방법
+방법1: 관리자 아이디로 로그인하여 /api/ 주소로 들어가기
+방법2: REST 통신 보내기 (Rest Client 확장프로그램 추천)
+[초기 데이터 모음](dataInitialization/data.rest)
+
 #### 설치한 pip
 ```bash
 pip install django
+pip install Pillow
+pip install djangorestframework
+pip install requests
+pip install django-filter
 ```
+
+#### requirement 생성 및 설치
+생성 `pip freeze > requirements.txt`
+설치 `pip install -r requirements.txt`
 
 #### html 기본 형식
 ```html
@@ -95,10 +111,17 @@ pip install django
 {% block js %}{% endblock %}
 ```
 
-#### requirement 생성 및 설치
+#### 데이터베이스 초기화
 ```bash
-pip freeze > requirements.txt
-pip install -r requirements.txt
+find . -path "*/migrations/*.py" -not -name "__init__.py" -delete
+find . -path "*/migrations/*.pyc"  -delete
+```
+`db.sqlite3` 삭제
+
+#### 데이터베이스 생성
+```bash
+python manage.py makemigrations
+python manage.py migrate
 ```
 
 #### 명령어 모음
@@ -107,3 +130,11 @@ pip install -r requirements.txt
 static 파일 모으기: `python manage.py collectstatic`
 
 app 만들기: `python manage.py startapp (앱이름)`
+
+관리자 만들기: `python manage.py createsuperuser`
+
+관리자 편하게 만들기: `python manage.py createsuperuser --email admin@example.com --username admin`
+
+#### 만든 계정 종류(아이디/비번)
+superuser: admin/admin, 
+user: user1/user1, 
