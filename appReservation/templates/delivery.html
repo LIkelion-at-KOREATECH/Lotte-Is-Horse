@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}예약하기{% endblock %}
+{% block title %}달려가마{% endblock %}
 
 <!-- User CSS -->
 {% block css %}{% endblock %}
@@ -11,7 +11,7 @@
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <br>
     <div style="border: 0; padding: 0;" class="col-md-3">
-        <img class="img-fluid" src="{% static 'img/reservation-title.png' %}">
+        <img class="img-fluid" src="{% static 'img/delivery-title.png' %}">
     </div>
     <br>
     <div class="row">
@@ -48,30 +48,28 @@
     <br>
     <div class="row">
         <div class="col-3">
-            <p><strong>총 가격</strong></p>
-            <p><strong>방문 매장</strong></p>
-            <p><strong>방문 기한</strong></p>
+            <p><strong>배송비</strong></p>
+            <p><strong>수령인</strong></p>
+            <p><strong>전화번호</strong></p>
+            <p><strong>주소</strong></p>
+            <p><strong>메모</strong></p>
         </div>
         <div class="col">
-            <p>{{ price }} 원</p>
+            <p>2000 원</p>
             <!-- 장바구니일때 -->
             <!-- <p>{{ priceSum }}원</p> -->
             <!-- js를 통해 모든 price 더하는 연산 - 장바구니 나오면 할 것 -->
-            <p>{{ storeName }}</p>
+            <p>소분팀</p>
+            <p>010-0000-0000</p>
+            <p>한국기술교육대학교</p>
+            <p>투표 많이 해주세용~!</p>
             <!-- 장바구니일 때: js를 통해 장바구니 매장 명 반복 -->
             <p id="reservation-date"></p>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <div>
-                <p class="text-danger">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <form action="{% url 'paymentReservation' %}" method="get">
+            <form action="{% url 'paymentDelivery' %}" method="get">
                 <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
                 <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
                 <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
@@ -87,7 +85,6 @@
 {% endblock %}
 
 {% block js %}
-<script src="{% static 'js/reservation-date.js' %}"></script>
-<script src="{% static 'reservation-title.png' %}"></script>
+<script src="{% static 'delivery-title.png' %}"></script>
 <script src="{% static 'js/A-working-Rating-option-for-Contact-Forms.js' %}"></script>
 {% endblock %}
