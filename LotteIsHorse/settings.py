@@ -14,7 +14,8 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-BASE_URL = "http://127.0.0.1:8000/api/"
+#BASE_URL = "https://lotte-is-horse-api-server.herokuapp.com/api/"
+BASE_URL = "http://3.35.243.185:8000/api/"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -33,9 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'appMain',
     'appUser',
-    'rest_framework',
-    'django_filters',
-    'model.apps.ModelConfig',
+    'appReservation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -133,15 +132,6 @@ STATICFILES_DIRS = [
 STATIC_ROOT = BASE_DIR / 'static'
 
 # Media files
-MEDIA_URL = '/media/'
+# MEDIA_URL = '/media/'
 
-MEDIA_ROOT = BASE_DIR / 'media'
-
-REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAdminUser',
-    ],
-    'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ],
-}
+# MEDIA_ROOT = BASE_DIR / 'media'

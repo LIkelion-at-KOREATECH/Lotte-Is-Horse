@@ -23,7 +23,7 @@ from django.conf.urls.static import static
 # Including another URLconf
 import appMain
 import appUser
-import model
+import appReservation
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,5 +31,5 @@ urlpatterns = [
     # Including another URLconf
     path('', include('appMain.urls')),
     path('', include('appUser.urls')),
-    path('api/', include('model.urls')),
+    path('', include('appReservation.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

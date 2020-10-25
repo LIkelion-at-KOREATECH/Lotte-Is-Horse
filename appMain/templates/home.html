@@ -29,16 +29,21 @@
         <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">매장별</p>
         <p class="d-xl-flex align-items-xl-center" style="margin-right: 5px;margin-left: 5px;font-size: 16px;">|</p>
         <p class="d-xl-flex align-items-xl-center" style="font-size: 16px;">제품별</p>
-        <p id="out"></p>
     </div>  
 </div>
 <div class="projects-horizontal">
     <h1 style="font-size: 20px;margin-bottom: 16px;text-align: center;">⭐제품목록⭐ 근처의 업체를 확인하세요!</h1>
     
 
+    <div class="text-center d-none" id="delay-sign">
+        <p><strong class="text-warning">일하는 중.. 조금만 기다려주세요!</strong></p>
+        <p class="spinner-border text-warning" role="status">
+            <img src="{% static 'img/horse.svg' %}" style="width: 39px;">
+            <span class="sr-only justify-content-center">Loading...</span>
+        </p>
+    </div>
     <div class="container">
         <div class="row projects" id="product-list">
-
         </div>
     </div>
 </div>
