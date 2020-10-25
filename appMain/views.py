@@ -68,23 +68,14 @@ def basket(request):
     for key, value in request.GET.items():
         responseDic[key] = value
 
-
-    
     Bs = Basket.objects.all()
-    for old_bs in Bs:
-        if old_bs.name == responseDic['name']:
-            Bs = Basket.objects.get(old_bs.name == responseDic['name'])
-            Bs.count =Bs.count + 1 
-            Bs.save()
-            print('1')
-            break
-        else:
-            Bss = Basket(brands= responseDic['brand'] ,name=responseDic['name'], price=responseDic['price'],storeName=responseDic['storeName'], count=1,pic=responseDic['mainImage'])
-            Bss.save()
-            print('2')
-            break
-    if not Bs:
+    if Basket.objects.filter(name = responseDic['name']):
+        tmp = Basket.objects.filter(name = responseDic['name'])
+        print("아이거다", tmp)
+        tmp[0].count = tmp[0].count + 1
+        tmp[0].save()
+    else:
         Bss = Basket(brands= responseDic['brand'] ,name=responseDic['name'], price=responseDic['price'],storeName=responseDic['storeName'], count=1,pic=responseDic['mainImage'])
         Bss.save()
-        print('3')
+        
     return render(request, 'basket.html', {'Bs':Bs})

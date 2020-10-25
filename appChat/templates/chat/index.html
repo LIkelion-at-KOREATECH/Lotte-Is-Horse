@@ -1,27 +1,28 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html>
 
-<head>
+<!-- Title -->
+{% block title %}Chat{% endblock %}
 
-    <head>
-        <meta charset="utf-8">
-        <title>Chat</title>
-        <link rel="stylesheet" href="{% static 'css/chat_index.css' %}">
-    </head>
-</head>
+<!-- User CSS -->
+{% block css %}<link rel="stylesheet" href="{% static 'css/chat_index.css' %}">{% endblock %}
 
-<body>
-    <div id="wrap">
-        <div id="chatWrap">
-            <div id="chatView"></div>
-            <form id="sendForm" onsubmit="return false">
-                <input type="text" id="message" placeholder="메시지를 입력하세요." autocomplete="off">
-                <input type="submit" id="send" value="전송">
-            </form>
-        </div>
+<!-- Main Content -->
+{% block content %}
+<div id="wrap">
+    <div id="chatWrap">
+        <div id="chatView"></div>
+        <form id="sendForm" onsubmit="return false">
+            <input type="text" id="message" placeholder="메시지를 입력하세요." autocomplete="off">
+            <input type="submit" id="send" value="전송">
+        </form>
     </div>
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</div>
+{% endblock %}
+
+<!-- User JS -->
+{% block js %}
+<script src="http://code.jquery.com/jquery-latest.js"></script>
     <script>
         function getName(names) {
             while (true) {
@@ -133,6 +134,4 @@
             });
         });
     </script>
-</body>
-
-</html>
+{% endblock %}
