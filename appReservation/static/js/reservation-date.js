@@ -9,6 +9,8 @@ let day = today.getDay();  // 요일 (0부터 일요일)
 let week = ['일', '월', '화', '수', '목', '금', '토'];
 let dayString = week[day];
 
+let hours = today.getHours();
+let minutes = today.getMinutes();
 
 // document.write(year + '년 ' + month + '월 ' + date + '일 ' + dayString + '요일')
 
@@ -16,3 +18,5 @@ let sevenDaysAgo = new Date(year, month, date);
 sevenDaysAgo.setDate(sevenDaysAgo.getDate() + 7);
 
 $('#reservation-date').text(year + '년 ' + month + '월 ' + date + '일 ' + dayString + '요일 ~ ' + sevenDaysAgo.getFullYear() + '년 ' + sevenDaysAgo.getMonth() + '월 ' + sevenDaysAgo.getDate() + '일 ' + dayString + '요일');
+
+$('#delivery-date').text(year + '년 ' + month + '월 ' + date + '일 ' + hours + '시 ' + minutes + '분 내에 도착 예정입니다!')

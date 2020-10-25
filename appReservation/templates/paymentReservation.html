@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}예약하기{% endblock %}
+
+<!-- User CSS -->
+{% block css %}{% endblock %}
+
+<!-- Main Content -->
+{% block content %}
+<div class="container border-bottom" style="padding-bottom: 15px;">
+    <br>
+    <div class="row">
+        <!-- <div class="col-md-3"> -->
+            <img class="img-fluid" src="{% static 'img/payment-complete-reservation.png' %}">
+        <!-- </div> -->
+    </div>
+    <br>
+</div>
+
+<div class="container border-bottom" style="padding-bottom: 15px;">
+    <br>
+    <div class="row">
+        <div class="col-3">
+            <p><strong>예약번호</strong></p>
+            <p><strong>방문 매장</strong></p>
+            <p><strong>방문 기한</strong></p>
+        </div>
+        <div class="col">
+            <p>1325584350</p>
+            <!-- 장바구니일때 -->
+            <!-- <p>{{ priceSum }}원</p> -->
+            <!-- js를 통해 모든 price 더하는 연산 - 장바구니 나오면 할 것 -->
+            <p>{{ storeName }}</p>
+            <!-- 장바구니일 때: js를 통해 장바구니 매장 명 반복 -->
+            <p id="reservation-date"></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div>
+                <p class="text-danger">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'home' %}" method="get">
+                <button class="btn btn-outline-secondary btn-block" type="submit">메인으로 돌아가기</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/reservation-date.js' %}"></script>
+<script src="{% static 'reservation-title.png' %}"></script>
+<script src="{% static 'js/A-working-Rating-option-for-Contact-Forms.js' %}"></script>
+{% endblock %}

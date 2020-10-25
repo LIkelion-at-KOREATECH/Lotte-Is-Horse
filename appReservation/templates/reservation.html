@@ -71,7 +71,15 @@
     </div>
     <div class="row">
         <div class="col">
-            <button class="btn btn-outline-secondary btn-block" type="button">결제하기</button>
+            <form action="{% url 'paymentReservation' %}" method="get">
+                <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
+                <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
+                <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
+                <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" /></div>
+                <div class="d-none"><label>sell</label><input name="sell" value="{{ sell }}" /></div>
+                <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" /></div>
+                <button class="btn btn-outline-secondary btn-block" type="submit">결제하기</button>
+            </form>
         </div>
     </div>
 </div>
