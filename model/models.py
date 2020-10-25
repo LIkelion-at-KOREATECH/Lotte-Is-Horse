@@ -36,8 +36,12 @@ class Sell(models.Model):
 
 
 class Basket(models.Model):
-    store = models.ForeignKey(Store, on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     
+    brands = models.TextField()
+    name = models.TextField()
+    price = models.TextField()
+    storeName = models.TextField()
+    count = models.TextField()
+
     def __str__(self):
-        return self.name
+         return self.name

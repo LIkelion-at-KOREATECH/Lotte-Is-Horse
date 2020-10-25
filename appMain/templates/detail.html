@@ -33,9 +33,15 @@
                 <div class="col">
                     <button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button>
                     <button class="btn btn-outline-secondary btn-block" type="button">당일배송</button>
-                    <form action="" method="get">
-                        <input name="{{key}}" value="{{vlaue}}"/>
-                        <button class="btn btn-outline-secondary btn-block" type="submit" href="{% url 'basket' %}">장바구니</button>
+                    <form action="basket" method="get">
+                        <!-- <a class="btn btn-outline-secondary btn-block" type="submit" href="{% url 'basket' %}" > -->
+                            <input name="brand" value="{{brand}}" style='display:none'/>
+                            <input name="name" value="{{name}}" style='display:none'/> 
+                            <input name="price" value="{{price}}" style='display:none'/>
+                            <input name="storeName" value="{{storeName}}" style='display:none'/>
+                            <input name="count" value="{{count}}" style='display:none'/>
+                            <input type='submit' value="장바구니"/>
+                        <!-- </a> -->
                     </form>
                     <button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
                     <button
