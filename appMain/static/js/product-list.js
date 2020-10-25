@@ -1,4 +1,4 @@
-let selectStoreName = "롭스 건대점";
+let selectStoreName = "서울 롭스 강남점";
 
 $.ajax({
     //url: home,
