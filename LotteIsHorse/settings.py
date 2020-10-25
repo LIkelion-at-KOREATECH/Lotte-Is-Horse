@@ -31,17 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< HEAD
     'channels',
     'appChat',
-    'appMain.apps.AppmainConfig',
-    'appUser.apps.AppuserConfig',
-=======
     'appMain',
     'appUser',
     'rest_framework',
     'django_filters',
->>>>>>> master
     'model.apps.ModelConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -144,7 +139,6 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
-<<<<<<< HEAD
 STATIC_ROOT = BASE_DIR / "static"
 
 # Channels
@@ -158,7 +152,8 @@ CHANNEL_LAYERS = {
             "hosts": [('127.0.0.1', 6379)],
         },
     },
-=======
+}
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAdminUser',
@@ -166,5 +161,4 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
         'django_filters.rest_framework.DjangoFilterBackend'
     ],
->>>>>>> master
 }
