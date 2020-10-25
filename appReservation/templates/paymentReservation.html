@@ -22,11 +22,13 @@
     <br>
     <div class="row">
         <div class="col-3">
+            <br>
             <p><strong>예약번호</strong></p>
             <p><strong>방문 매장</strong></p>
             <p><strong>방문 기한</strong></p>
         </div>
         <div class="col">
+            <br>
             <p>1325584350</p>
             <!-- 장바구니일때 -->
             <!-- <p>{{ priceSum }}원</p> -->
@@ -39,12 +41,12 @@
     <div class="row">
         <div class="col">
             <div>
-                <p class="text-danger">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
+                <p class="text-danger" style="padding-top: 0.5rem; padding-bottom: 2.5rem;">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="padding-bottom: 2rem;">
             <form action="{% url 'home' %}" method="get">
                 <button class="btn btn-outline-secondary btn-block" type="submit">메인으로 돌아가기</button>
             </form>

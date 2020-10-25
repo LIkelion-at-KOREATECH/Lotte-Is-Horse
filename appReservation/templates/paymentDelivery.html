@@ -22,18 +22,20 @@
     <br>
     <div class="row">
         <div class="col-3">
+            <br>
             <p><strong>예약번호</strong></p>
             <p><strong>배달매장</strong></p>
             <p><strong>배달예정시간</strong></p>
         </div>
         <div class="col">
+            <br>
             <p>6345323543</p>
             <p>{{ storeName }}</p>
             <p id="delivery-date"></p>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="padding-bottom: 2rem; padding-top: 3rem;">
             <form action="{% url 'home' %}" method="get">
                 <button class="btn btn-outline-secondary btn-block" type="submit">메인으로 돌아가기</button>
             </form>
@@ -45,6 +47,5 @@
 
 {% block js %}
 <script src="{% static 'js/reservation-date.js' %}"></script>
-<script src="{% static 'reservation-title.png' %}"></script>
 <script src="{% static 'js/A-working-Rating-option-for-Contact-Forms.js' %}"></script>
 {% endblock %}

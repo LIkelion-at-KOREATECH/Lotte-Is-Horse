@@ -65,12 +65,12 @@
     <div class="row">
         <div class="col">
             <div>
-                <p class="text-danger">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
+                <p class="text-danger" style="padding-top: 0.5rem; padding-bottom: 2.5rem;">※ 기간 내 미방문 시 자동 예약취소됩니다!</p>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col">
+        <div class="col" style="padding-bottom: 2rem;">
             <form action="{% url 'paymentReservation' %}" method="get">
                 <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
                 <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
