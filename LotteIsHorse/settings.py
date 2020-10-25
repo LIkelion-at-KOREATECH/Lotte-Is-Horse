@@ -129,6 +129,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'LotteIsHorse' / 'static',
     BASE_DIR / 'appMain' / 'static',
     BASE_DIR / 'appUser' / 'static',
+    BASE_DIR / 'appChat' / 'static',
 ]
 
 STATIC_ROOT = BASE_DIR / 'static'

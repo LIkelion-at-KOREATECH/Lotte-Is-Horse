@@ -1,0 +1,99 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: lightblue;
+}
+
+#wrap {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    background-color: lightblue;
+}
+
+#chatWrap {
+    width: 600px;
+    height: 800px;
+    margin: auto;
+    border: 1px solid gray;
+    background-color: white;
+}
+
+#chatView {
+    width: 100%;
+    height: 90%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.system {
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    color: darkgray;
+}
+
+.chatLine {
+    height: auto;
+    padding: 10px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.nick {
+    display: block;
+    margin-left: 1%;
+    font-size: large;
+    font-weight: bold;
+    color: gray;
+}
+
+.chatLog {
+    max-width: 60%;
+    height: 80%;
+    padding: 10px;
+    border-radius: 20px;
+    display: inline-block;
+    word-break: break-all;
+    font-size: large;
+    background-color: lightgray;
+}
+
+.me {
+    float: right;
+    background-color: lightblue;
+}
+
+#sendForm {
+    height: 10%;
+    padding: 5px;
+    border-top: 1px solid gray;
+    text-align: center;
+}
+
+#name {
+    width: 20%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+#message {
+    width: 80%;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 8px;
+}
+
+#send {
+    width: 16%;
+    height: 50px;
+
+    border: None;
+    background-color: rgb(226, 4, 19);
+
+    font-size: 20px;
+    color: #FFFFFF;
+}

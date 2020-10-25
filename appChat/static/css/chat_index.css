@@ -1,0 +1,140 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+#wrap {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+
+    overflow: scroll;
+    background-color: #FFFFFF;
+}
+
+#chatWrap {
+    display: flex;
+    flex-direction: column;
+
+    width: 700px;
+    height: 95%;
+
+    border-radius: 25px;
+    margin: auto;
+
+    border: 2px solid rgb(226, 4, 19);
+    background-color: white;
+}
+
+#chatView {
+    flex: 9;
+    width: 100%;
+    height: 90%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#chatView::-webkit-scrollbar {
+    width: 10px;
+}
+
+#chatView::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+#chatView::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    background-color: gray;
+}
+
+#chatView::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+.system {
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    color: darkgray;
+}
+
+.chatLine {
+    height: auto;
+    padding: 5px;
+    overflow: hidden;
+    text-align: left;
+}
+
+.nick {
+    display: block;
+    margin-left: 1%;
+    font-size: large;
+    font-weight: bold;
+    color: gray;
+}
+
+.chatLog {
+    max-width: 60%;
+    padding: 10px;
+
+    border-radius: 15px;
+    display: inline-block;
+    word-break: break-all;
+    font-size: large;
+    background-color: lightgray;
+}
+
+.me {
+    float: right;
+
+    background-color: lightblue;
+}
+
+#sendForm {
+    flex: 1;
+    height: 8%;
+    padding: 0;
+
+    text-align: center;    
+}
+
+#sendForm:focus{
+    outline : none;
+}
+
+#name {
+    width: 20%;
+    height: 50px;
+    font-size: 20px;
+    border : None;
+}
+
+#message {
+    width: 80%;
+    height: 80%;
+    font-size: 20px;
+
+    position: bottom;
+
+    border-radius: 15px;
+    border-color: rgb(226, 4, 19);
+}
+#message:focus{
+    outline : none;
+}
+
+#send {
+    width: 16%;
+    height: 80%;
+
+    border-radius: 15px;
+    border: None;
+    background-color: rgb(226, 4, 19);
+
+    font-size: 20px;
+    color: #FFFFFF;
+}
