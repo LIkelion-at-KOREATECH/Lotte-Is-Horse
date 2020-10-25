@@ -21,11 +21,12 @@ body {
     flex-direction: column;
 
     width: 700px;
-    height: 95%;
+    height: 700px;
 
     border-radius: 25px;
     margin: auto;
-
+    margin-top: 20px;
+    
     border: 2px solid rgb(226, 4, 19);
     background-color: white;
 }
