@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'appChat',
     'appMain',
     'appUser',
+    'appReservation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
