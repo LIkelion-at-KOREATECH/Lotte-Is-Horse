@@ -40,30 +40,27 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button>
-                    <button class="btn btn-outline-secondary btn-block" type="button">당일배송</button>
-                    <form action="{% url 'basket' %}" method="get">
-                        <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
-                        <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
-                        <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
-                        <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" />
-                        </div>
-                        <div class="d-none"><label>count</label><input name="count" value="{{ count }}" /></div>
-                        <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" />
-                        </div>
-                        <button class="btn btn-outline-secondary btn-block" type="submit">장바구니</button>
-                    </form>
+                    <div style="padding-bottom: 0.5rem;">
+                        <form action="{% url 'basket' %}" method="get">
+                            <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
+                            <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
+                            <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
+                            <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" /></div>
+                            <div class="d-none"><label>count</label><input name="count" value="{{ count }}" /></div>
+                            <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" /></div>
+                            <button class="btn btn-outline-secondary btn-block" type="submit">장바구니</button>
+                        </form>
+                    </div>
                     <div style="padding-bottom: 0.5rem;">
                         <form action="{% url 'reservation' %}" method="get">
                             <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
                             <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
                             <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
-                            <div class="d-none"><label>storeName</label><input name="storeName"
-                                    value="{{ storeName }}" /></div>
+                            <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" /></div>
                             <div class="d-none"><label>sell</label><input name="sell" value="{{ sell }}" /></div>
                             <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" /></div>
                             <div>
-                                    <button style="CURSOR:hand;" title="근처 매장의 제품을 예약하고 픽업할 수 있는 서비스입니다." class="btn btn-outline-secondary btn-block" type="submit">예약하기(방문구매)</button>
+                                <button style="CURSOR:hand;" title="근처 매장의 제품을 예약하고 픽업할 수 있는 서비스입니다." class="btn btn-outline-secondary btn-block" type="submit">예약하기(방문구매)</button>
                             </div>
                         </form>
                     </div>
@@ -85,7 +82,6 @@
                         <button style="CURSOR:hand;" title="근처 매장 직원과 실시간으로 소통을 할 수 있는 채팅 서비스입니다." class="btn btn-outline-secondary btn-block" type="submit">실시간 연결</button>
                     </div>
                 </div>
-                <button class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
             </div>
         </div>
     </div>
