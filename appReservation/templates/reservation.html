@@ -8,8 +8,11 @@
 
 <!-- Main Content -->
 {% block content %}
-
 <div class="container border-bottom" style="padding-bottom: 15px;">
+    <br>
+    <div style="border: 0; padding: 0;" class="col-md-3">
+        <img class="img-fluid" src="{% static 'img/reservation-title.png' %}">
+    </div>
     <br>
     <div class="row">
         <div class="col-md-2">
@@ -77,5 +80,6 @@
 
 {% block js %}
 <script src="{% static 'js/reservation-date.js' %}"></script>
+<script src="{% static 'reservation-title.png' %}"></script>
 <script src="{% static 'js/A-working-Rating-option-for-Contact-Forms.js' %}"></script>
 {% endblock %}
