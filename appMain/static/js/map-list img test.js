@@ -12,6 +12,9 @@ let nowInfoWindow = new kakao.maps.InfoWindow({
 });
 let lohbsMarkers = []
 
+// 이벤트를 담을 변수
+var events = [];
+
 // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
 if (navigator.geolocation) {
 
@@ -358,7 +361,7 @@ var positions = [{
         latlng: new kakao.maps.LatLng(37.546631, 126.874825)
     },
     {
-        title: '서울 롭스 영등포역사',
+        title: '서울 롭스 영등포역사점',
         latlng: new kakao.maps.LatLng(37.515461, 126.907527)
     },
     {
@@ -395,7 +398,7 @@ var positions = [{
     },
     {
         title: '서울 롭스 월드몰1호점',
-        latlng: new kakao.maps.LatLng(37.513814, 127.105029)
+        latlng: new kakao.maps.LatLng(37.512305, 127.103196)
     },
     {
         title: '서울 롭스 월드몰2호점',
@@ -533,15 +536,14 @@ for (var i = 0; i < positions.length; i++) {
         map: map, // 마커를 표시할 지도
         image: markerImage,
         position: positions[i].latlng, // 마커의 위치
-        title: positions[i].title
     });
 
     // 마커에 표시할 인포윈도우를 생성합니다 
     var infowindow = new kakao.maps.InfoWindow({
-        content: "<div>" + positions[i].title + "</div>" // 인포윈도우에 표시할 내용
+        content: '<p style="width:150px;text-align:center;padding:6px 0;">' + positions[i].title + "</p>" // 인포윈도우에 표시할 내용
     });
 
-    lohbsMarkers.push(marker);
+    lohbsMarkers.push({marker: marker, title: positions[i].title});
 
     // 마커에 mouseover 이벤트와 mouseout 이벤트를 등록합니다
     // 이벤트 리스너로는 클로저를 만들어 등록합니다 
@@ -557,8 +559,12 @@ function makeOverListener(map, marker, infowindow) {
     };
 }
 
+const alertHandler = function alertFunction() {
+    alert('주문할 수 없는 거리의 매장입니다! 다른 매장을 선택해주세요!');
+};
+
 //  클릭을 하게 하고, 지점 위치 연동
-function makeClickListener(map, marker, infowindow, data) {
+function makeClickListener(data) {
     return function () {
         let selectStoreName = data;
 
@@ -571,6 +577,7 @@ function makeClickListener(map, marker, infowindow, data) {
         }).done(data => {    // HTTP 요청 성공 시, 요청한 데이터가 done() 메소드로 전달
             //alert('성공!')
             //console.log(data.products)
+            $("#choice-store").addClass("d-none");
             $("#product-list").empty();
             data.products.forEach((product, idx) => {
                 //console.log(product)
@@ -600,15 +607,19 @@ function makeClickListener(map, marker, infowindow, data) {
                 $("#product-list").append(html);
             });
 
+            if (data.products.length == 0) {
+                alert('주문 가능한 상품이 없습니다!')
+                $("#choice-store").removeClass("d-none");
+            }
             $("#delay-sign").addClass("d-none");
         }).fail((xhr, data) => {     // HTTP 요청 실패 시, 오류와 상태에 관한 정보가 fail() 메소드로 전달
-            alert('주문한 가능한 상품이 없습니다!')
+            alert('주문 가능한 상품이 없습니다!')
+            $("#delay-sign").addClass("d-none");
+            $("#choice-store").removeClass("d-none");
         }).always((xhr, data) => {   // HTTP 요청의 성공여부와는 상관없이 언제나 always()메소드 실행
             //alert('항상!')
         })
-
-
-    };
+    }
 }
 
 
@@ -646,9 +657,13 @@ document.querySelector('#go-button').addEventListener('click', () => {
             // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
             map.setCenter(coords);
             
+            events.forEach((e) => {
+                kakao.maps.event.removeListener(e.target, e.type, e.handler);
+            })
+
             for (let item of lohbsMarkers) {     
-                Latdis = (item.getPosition().getLat() - coords.getLat()) * 92 ;
-                Lngdis = (item.getPosition().getLng() - coords.getLng()) * 114 ;
+                Latdis = (item.marker.getPosition().getLat() - coords.getLat()) * 92 ;
+                Lngdis = (item.marker.getPosition().getLng() - coords.getLng()) * 114 ;
                 
                 cal = Math.sqrt(Latdis * Latdis + Lngdis * Lngdis) ;
 
@@ -667,23 +682,19 @@ document.querySelector('#go-button').addEventListener('click', () => {
                 var dieMarkerImage = new kakao.maps.MarkerImage(dieImageSrc, dieImageSize, dieImageOption);
 
                 if (cal < 3 ) {
-                    item.setImage(aliveMarkerImage);
-                    kakao.maps.event.removeListener(item, 'click', alertFunction());
-                    kakao.maps.event.addListener(item, 'click', makeClickListener(map, marker, infowindow, item.getTitle()));
+                    let event;
+                    item.marker.setImage(aliveMarkerImage);
+                    kakao.maps.event.removeListener(item.marker, 'click', alertHandler);
+                    kakao.maps.event.addListener(item.marker, 'click', event = makeClickListener(item.title));
+                    events.push({target: item.marker, type: 'click', handler: event});
                 } else {
-                    item.setImage(dieMarkerImage);
-                    kakao.maps.event.removeListener(item, 'click', makeClickListener(map, marker, infowindow, item.getTitle()));
-                    kakao.maps.event.addListener(item, 'click', alertFunction());
+                    item.marker.setImage(dieMarkerImage);
+                    kakao.maps.event.removeListener(item.marker, 'click', alertHandler);
+                    kakao.maps.event.addListener(item.marker, 'click', alertHandler);
                 }
             }
         }
     });
 });
-
-function alertFunction() {
-    return function () {
-        alert('주문할 수 없는 거리의 매장입니다! 다른 매장을 선택해주세요!');
-    };
-}
 
 // document.getElementById(myInput).value
