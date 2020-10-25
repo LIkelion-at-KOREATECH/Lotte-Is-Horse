@@ -11,7 +11,11 @@
 
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <div class="row">
-        <div class="col-md-4"><img class="img-fluid" src="{{ mainImage }}"></div>
+        <div class="col-md-4">
+            {% if mainImage != "null" %} <img class="img-fluid" src="{{ mainImage }}">
+            {% else %} <img class="img-fluid" src="{% static 'img/noImage.png' %}">
+            {% endif %}
+        </div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-3">
@@ -65,7 +69,6 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="detailProduct" role="tabpanel" aria-labelledby="home-tab">
-            {% if mainImage is not None %} <img class="img-fluid" src="{{ mainImage }}"> {% endif %}
             {% if detailImage0 != "null" %} <img class="img-fluid" src="{{ detailImage0 }}"> {% endif %}
             {% if detailImage1 != "null" %} <img class="img-fluid" src="{{ detailImage1 }}"> {% endif %}
             {% if detailImage2 != "null" %} <img class="img-fluid" src="{{ detailImage2 }}"> {% endif %}
