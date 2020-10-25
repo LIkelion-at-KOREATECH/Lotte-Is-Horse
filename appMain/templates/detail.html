@@ -11,7 +11,11 @@
 
 <div class="container border-bottom" style="padding-bottom: 15px;">
     <div class="row">
-        <div class="col-md-4"><img class="img-fluid" src="{{ mainImage }}"></div>
+        <div class="col-md-4">
+            {% if mainImage != "null" %} <img class="img-fluid" src="{{ mainImage }}">
+            {% else %} <img class="img-fluid" src="{% static 'img/noImage.png' %}">
+            {% endif %}
+        </div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-3">
@@ -30,7 +34,17 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col"><button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button><button class="btn btn-outline-secondary btn-block" type="button">당일배송</button><button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
+                <div class="col">
+                    <form action="{% url 'reservation' %}" method="get">
+                        <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
+                        <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
+                        <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
+                        <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" /></div>
+                        <div class="d-none"><label>sell</label><input name="sell" value="{{ sell }}" /></div>
+                        <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" /></div>
+                        <button class="btn btn-outline-secondary btn-block" type="submit">예약하기(방문구매)</button>
+                    </form>
+                    <button class="btn btn-outline-secondary btn-block" type="button">당일배송</button><button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
                     <button
                         class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
                 </div>
@@ -52,7 +66,6 @@
 
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="detailProduct" role="tabpanel" aria-labelledby="home-tab">
-            {% if mainImage is not None %} <img class="img-fluid" src="{{ mainImage }}"> {% endif %}
             {% if detailImage0 != "null" %} <img class="img-fluid" src="{{ detailImage0 }}"> {% endif %}
             {% if detailImage1 != "null" %} <img class="img-fluid" src="{{ detailImage1 }}"> {% endif %}
             {% if detailImage2 != "null" %} <img class="img-fluid" src="{{ detailImage2 }}"> {% endif %}

@@ -81,10 +81,7 @@
 #### 설치한 pip
 ```bash
 pip install django
-pip install Pillow
-pip install djangorestframework
 pip install requests
-pip install django-filter
 ```
 
 #### requirement 생성 및 설치
