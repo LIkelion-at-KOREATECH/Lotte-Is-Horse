@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 import requests
 from django.http.response import HttpResponse
-from model.models import Basket
+from .models import Basket
 
 from LotteIsHorse.settings import BASE_URL  # url 주소
 
@@ -68,14 +68,23 @@ def basket(request):
     for key, value in request.GET.items():
         responseDic[key] = value
 
-    # sell = requests.get(BASE_URL + 'sell?id=' + responseDic['sell'], auth=('admin', 'admin')).json()
-
-    # responseDic['count'] = sell[0]['count']
 
     
-
     Bs = Basket.objects.all()
-
-    print(Bs)
-
-    return render(request, 'basket.html', responseDic)
+    for old_bs in Bs:
+        if old_bs.name == responseDic['name']:
+            Bs = Basket.objects.get(old_bs.name == responseDic['name'])
+            Bs.count =Bs.count + 1 
+            Bs.save()
+            print('1')
+            break
+        else:
+            Bss = Basket(brands= responseDic['brand'] ,name=responseDic['name'], price=responseDic['price'],storeName=responseDic['storeName'], count=1,pic=responseDic['mainImage'])
+            Bss.save()
+            print('2')
+            break
+    if not Bs:
+        Bss = Basket(brands= responseDic['brand'] ,name=responseDic['name'], price=responseDic['price'],storeName=responseDic['storeName'], count=1,pic=responseDic['mainImage'])
+        Bss.save()
+        print('3')
+    return render(request, 'basket.html', {'Bs':Bs})

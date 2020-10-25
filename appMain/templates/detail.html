@@ -38,16 +38,17 @@
                 <div class="col">
                     <button class="btn btn-outline-secondary btn-block" type="button">예약하기(방문구매)</button>
                     <button class="btn btn-outline-secondary btn-block" type="button">당일배송</button>
-                    <form action="basket" method="get">
-                        <!-- <a class="btn btn-outline-secondary btn-block" type="submit" href="{% url 'basket' %}" > -->
-                            <input name="brand" value="{{brand}}" style='display:none'/>
-                            <input name="name" value="{{name}}" style='display:none'/> 
-                            <input name="price" value="{{price}}" style='display:none'/>
-                            <input name="storeName" value="{{storeName}}" style='display:none'/>
-                            <input name="count" value="{{count}}" style='display:none'/>
-                            <input type='submit' value="장바구니"/>
-                        <!-- </a> -->
-                    </form>
+                    <div style="padding-bottom: 0.5rem;">
+                        <form action="{% url 'basket' %}" method="get">
+                            <div class="d-none"><label>brand</label><input name="brand" value="{{ brand }}" /></div>
+                            <div class="d-none"><label>name</label><input name="name" value="{{ name }}" /></div>
+                            <div class="d-none"><label>price</label><input name="price" value="{{ price }}" /></div>
+                            <div class="d-none"><label>storeName</label><input name="storeName" value="{{ storeName }}" /></div>
+                            <div class="d-none"><label>count</label><input name="count" value="{{ count }}" /></div>
+                            <div class="d-none"><label>mainImage</label><input name="mainImage" value="{{ mainImage }}" /></div>
+                            <button class="btn btn-outline-secondary btn-block" type="submit">장바구니</button>
+                        </form>
+                    </div>
                     <button class="btn btn-outline-secondary btn-block" type="button">온라인으로 구매하기</button>
                     <button
                         class="btn btn-outline-secondary btn-block" type="button">실시간 연결</button>
