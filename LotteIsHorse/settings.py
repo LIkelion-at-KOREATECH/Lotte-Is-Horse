@@ -14,10 +14,7 @@ from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-<<<<<<< HEAD
-=======
 #BASE_URL = "https://lotte-is-horse-api-server.herokuapp.com/api/"
->>>>>>> dev
 BASE_URL = "http://3.35.243.185:8000/api/"
 
 # Quick-start development settings - unsuitable for production
@@ -37,13 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'appMain',
     'appUser',
-<<<<<<< HEAD
     'appReservation',
-    'rest_framework',
-    'django_filters',
-    'model.apps.ModelConfig',
-=======
->>>>>>> dev
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
