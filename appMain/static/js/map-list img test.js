@@ -358,7 +358,7 @@ var positions = [{
         latlng: new kakao.maps.LatLng(37.546631, 126.874825)
     },
     {
-        title: '서울 롭스 영등포역사',
+        title: '서울 롭스 영등포역사점',
         latlng: new kakao.maps.LatLng(37.515461, 126.907527)
     },
     {
@@ -395,7 +395,7 @@ var positions = [{
     },
     {
         title: '서울 롭스 월드몰1호점',
-        latlng: new kakao.maps.LatLng(37.513814, 127.105029)
+        latlng: new kakao.maps.LatLng(37.512305, 127.103196)
     },
     {
         title: '서울 롭스 월드몰2호점',
